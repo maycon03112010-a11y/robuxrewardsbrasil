@@ -67,6 +67,7 @@
       height: 100px;
       border-radius: 50%;
       border: 3px solid #38bdf8;
+      background: #0f172a;
     }
     .tiktok-btn {
       display: none;
@@ -79,7 +80,7 @@
       font-weight: bold;
       border-radius: 8px;
       margin-top: 20px;
-      box-sizing: border-border-box;
+      box-sizing: border-box;
       text-align: center;
       box-shadow: 0 4px 12px rgba(254, 44, 85, 0.4);
     }
@@ -106,8 +107,9 @@
     <!-- PASSO 2: Confirmar Avatar e Selecionar Robux -->
     <div id="step-2" class="step-2">
       <div class="avatar-box" id="avatarBox">
-        <img id="avatarImg" src="" alt="Avatar Roblox">
-        <p id="userDisplay" style="font-weight: bold; margin-top: 8px;"></p>
+        <img id="avatarImg" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-76D5D8A31D0850D695C058ADDCDE4C5F-Png/150/150/AvatarHeadshot/Png/noFilter" alt="Avatar Roblox">
+        <p id="userDisplay" style="font-weight: bold; margin-top: 8px; color: #38bdf8;"></p>
+        <p style="font-size: 12px; color: #10b981; margin: 4px 0 0 0;">✔ Conta encontrada com sucesso!</p>
       </div>
 
       <p>Escolha a quantidade de Robux:</p>
@@ -122,7 +124,7 @@
     </div>
 
     <!-- BOTÃO FINAL: TikTok -->
-    <a id="tiktokLink" class="tiktok-btn" href="https://www.tiktok.com/d/4/ZS9ymnvVtERuk-l1Wxs/" target="_blank">
+    <a id="tiktokLink" class="tiktok-btn" href="SEU_LINK_DO_TIKTOK_AQUI" target="_blank">
       Resgatar agora
     </a>
   </div>
@@ -135,14 +137,13 @@
         return;
       }
 
-      // Mostra o avatar fictício/padrão para validação
+      // Avança o passo de forma limpa e instantânea
       document.getElementById('step-1').style.display = 'none';
       document.getElementById('step-2').style.display = 'block';
       document.getElementById('avatarBox').style.display = 'block';
       
-      document.getElementById('userDisplay').innerText = username;
-      // Ícone padrão do Roblox
-      document.getElementById('avatarImg').src = 'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-76D5D8A31D0850D695C058ADDCDE4C5F-Png/150/150/AvatarHeadshot/Png/noFilter';
+      // Exibe o nome que o utilizador digitou na tela
+      document.getElementById('userDisplay').innerText = "@" + username;
     }
 
     function gerarRecompensa() {
@@ -152,7 +153,7 @@
 
       setTimeout(() => {
         btn.style.display = 'none';
-        document.getElementById('tiktokLink').style.display = 'block';
+        document.getElementById('https://www.tiktok.com/d/4/ZS9yuJhL6u1LL-SOZ0t/').style.display = 'block';
       }, 1500);
     }
   </script>

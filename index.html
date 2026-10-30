@@ -625,13 +625,12 @@
   </div>
 
   <script>
-    // OPÇÃO DE CLOUDFLARE WORKER PARA EVITAR BLOQUEIOS DE CORS NO GITHUB PAGES
     const CLOUDFLARE_WORKER_URL = ""; 
 
     let selectedRobuxAmount = 800;
     let currentUserId = null;
     let currentUsername = "";
-    let currentSearchId = 0; // Previne condições de corrida
+    let currentSearchId = 0;
 
     function updateClaimButtonState() {
       const claimBtn = document.getElementById('claimBtn');
@@ -689,7 +688,7 @@
           userData = await fetchUserWithFallbackProxies(usernameInput);
         }
 
-        if (searchId !== currentSearchId) return; // Ignora buscas antigas
+        if (searchId !== currentSearchId) return;
 
         if (!userData) {
           showAlert("Usuário não encontrado. Verifique se o nome de usuário está correto.");
@@ -700,7 +699,7 @@
         const username = userData.name;
         const displayName = userData.displayName || username;
 
-        // Buscar Avatar Headshot real
+        // Buscar Avatar Headshot real otimizado
         const avatarUrl = await fetchAvatarUrl(userId);
 
         if (searchId !== currentSearchId) return;
@@ -713,7 +712,7 @@
         currentUserId = userId;
         currentUsername = username;
 
-        // Atualizar Interface com dados verificados
+        // Atualizar Interface
         document.getElementById('profileName').innerHTML = `${username} <i class="fa-solid fa-circle-check verified-icon"></i>`;
         document.getElementById('profileDisplayName').innerText = `@${displayName}`;
         document.getElementById('profileId').innerText = `ID: ${userId}`;
@@ -753,19 +752,20 @@
         console.warn("Proxy 1 (corsproxy) falhou:", e);
       }
 
-      // Tentativa 2: codetabs
+      // Tentativa 2: allorigins (GET alternativo via busca caso POST falhe)
       try {
-        const res = await fetch(`https://api.codetabs.com/v1/proxy?quest=https://users.roblox.com/v1/usernames/users`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
+        const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`https://users.roblox.com/v1/users/search?keyword=${encodeURIComponent(username)}&limit=10`)}`);
         if (res.ok) {
-          const data = await res.json();
-          if (data && data.data && data.data.length > 0) return data.data[0];
+          const wrapper = await res.json();
+          const data = JSON.parse(wrapper.contents);
+          if (data && data.data && data.data.length > 0) {
+            // Procura correspondência exata de nome
+            const match = data.data.find(u => u.name.toLowerCase() === username.toLowerCase()) || data.data[0];
+            return match;
+          }
         }
       } catch (e) {
-        console.warn("Proxy 2 (codetabs) falhou:", e);
+        console.warn("Proxy 2 (allorigins) falhou:", e);
       }
 
       return null;
@@ -781,16 +781,23 @@
           const res = await fetch(`${CLOUDFLARE_WORKER_URL}/avatar/${userId}`);
           data = await res.json();
         } else {
+          // Tentativa com corsproxy direto
           const res = await fetch(`https://corsproxy.io/?${encodeURIComponent(rawUrl)}`);
           if (res.ok) {
             data = await res.json();
+          } else {
+            // Fallback com allorigins caso corsproxy falhe
+            const proxyRes = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(rawUrl)}`);
+            if (proxyRes.ok) {
+              const wrapper = await proxyRes.json();
+              data = JSON.parse(wrapper.contents);
+            }
           }
         }
 
         if (data && data.data && data.data.length > 0) {
           const item = data.data[0];
-          // Validação estrita do estado Completed e existência de imageUrl
-          if (item.state === "Completed" && item.imageUrl) {
+          if (item.imageUrl) {
             return item.imageUrl;
           }
         }

@@ -1,162 +1,856 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recompensas Robux</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robux Rewards | Plataforma Interativa</title>
+  
+  <!-- Fontes do Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome para Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
   <style>
+    :root {
+      --bg-dark: #0b0e14;
+      --card-bg: rgba(18, 24, 38, 0.75);
+      --card-border: rgba(138, 43, 226, 0.25);
+      --purple-main: #8a2be2;
+      --purple-glow: #9d4edd;
+      --cyan-neon: #00f0ff;
+      --blue-accent: #2563eb;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --danger: #ef4444;
+      --success: #10b981;
+    }
+
     * {
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    body {
-      background-color: #0f172a;
-      color: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
     }
-    .card {
-      background: #1e293b;
-      padding: 30px;
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(138, 43, 226, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(0, 240, 255, 0.1) 0%, transparent 40%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 15px 40px 15px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Top Bar */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 15px 20px;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
       border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      width: 100%;
-      max-width: 400px;
-      text-align: center;
+      margin-bottom: 25px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     }
-    h2 {
-      margin-top: 0;
-      color: #38bdf8;
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-    input, select {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #334155;
-      background: #0f172a;
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--purple-main), var(--cyan-neon));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
       color: #fff;
-      font-size: 16px;
+      box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
     }
-    button {
+
+    .logo-text h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      background: linear-gradient(90deg, #fff, var(--cyan-neon));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+    }
+
+    .logo-text span {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      display: block;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-secure {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--success);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Main Cards */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--purple-main), var(--cyan-neon), transparent);
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title i {
+      color: var(--cyan-neon);
+    }
+
+    .section-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* Input & Search Section */
+    .search-box {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-wrapper i {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 14px 16px 14px 48px;
+      background: rgba(10, 14, 23, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .input-field:focus {
+      border-color: var(--purple-glow);
+      box-shadow: 0 0 15px rgba(157, 78, 221, 0.3);
+    }
+
+    .btn-primary {
       width: 100%;
       padding: 14px;
-      background: #0284c7;
-      color: white;
+      background: linear-gradient(135deg, #00b4db, #0083b0);
       border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
       cursor: pointer;
-      margin-top: 10px;
-      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 180, 219, 0.3);
     }
-    button:hover {
-      background: #0369a1;
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 180, 219, 0.5);
     }
-    .avatar-box {
-      margin: 20px 0;
-      display: none;
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
     }
-    .avatar-box img {
-      width: 100px;
-      height: 100px;
+
+    /* User Profile Display */
+    .profile-result {
+      margin-top: 20px;
+      padding: 16px;
+      background: rgba(10, 14, 23, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .avatar-frame {
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
-      border: 3px solid #38bdf8;
-      background: #0f172a;
+      background: radial-gradient(circle, var(--purple-main) 0%, transparent 70%);
+      border: 2px solid var(--cyan-neon);
+      padding: 2px;
+      flex-shrink: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .tiktok-btn {
-      display: none;
+
+    .avatar-frame img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .profile-info h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .profile-info .display-name {
+      font-size: 0.8rem;
+      color: var(--cyan-neon);
+      margin-top: 2px;
+    }
+
+    .verified-icon {
+      color: var(--cyan-neon);
+      font-size: 0.9rem;
+    }
+
+    .profile-info p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Alert Message Box */
+    .alert-box {
+      margin-top: 15px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      line-height: 1.4;
+    }
+
+    .alert-error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
+    }
+
+    /* Robux Selection Options */
+    .robux-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .robux-card {
+      background: rgba(10, 14, 23, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 16px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .robux-card:hover {
+      border-color: var(--purple-glow);
+      transform: translateY(-2px);
+      background: rgba(138, 43, 226, 0.1);
+    }
+
+    .robux-card.active {
+      border-color: var(--cyan-neon);
+      background: rgba(0, 240, 255, 0.12);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    }
+
+    .robux-icon {
+      width: 38px;
+      height: 38px;
+      margin: 0 auto 8px auto;
+      background: rgba(0, 240, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan-neon);
+      font-size: 1.2rem;
+    }
+
+    .robux-amount {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .robux-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -8px;
+      right: 10px;
+      background: linear-gradient(90deg, var(--purple-main), var(--purple-glow));
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      text-transform: uppercase;
+    }
+
+    .btn-claim {
       width: 100%;
       padding: 16px;
-      background: #fe2c55;
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: bold;
-      border-radius: 8px;
       margin-top: 20px;
-      box-sizing: border-box;
+      background: linear-gradient(135deg, var(--purple-main), #6b21a8);
+      border: none;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(138, 43, 226, 0.4);
+    }
+
+    .btn-claim:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(138, 43, 226, 0.6);
+    }
+
+    .btn-claim:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Modal de Progresso */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(5, 7, 11, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background: var(--bg-dark);
+      border: 1px solid var(--purple-glow);
+      border-radius: 20px;
+      padding: 28px;
+      width: 100%;
+      max-width: 450px;
+      box-shadow: 0 0 30px rgba(157, 78, 221, 0.3);
       text-align: center;
-      box-shadow: 0 4px 12px rgba(254, 44, 85, 0.4);
     }
-    .tiktok-btn:hover {
-      background: #e02648;
+
+    .progress-bar-container {
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 20px 0 10px 0;
     }
-    .step-2 {
-      display: none;
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--purple-main), var(--cyan-neon));
+      transition: width 0.3s ease;
+    }
+
+    .terminal-logs {
+      background: #05070b;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 12px;
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: var(--cyan-neon);
+      text-align: left;
+      height: 90px;
+      overflow-y: auto;
+      margin-top: 15px;
+    }
+
+    /* Footer / Disclaimer */
+    .disclaimer-card {
+      background: rgba(18, 24, 38, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .disclaimer-card strong {
+      color: var(--text-main);
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h2>Recompensas Robux</h2>
+  <div class="container">
     
-    <!-- PASSO 1: Nome de usuário -->
-    <div id="step-1">
-      <p>Digite seu nome de usuário do Roblox:</p>
-      <input type="text" id="username" placeholder="Ex: NickRoblox">
-      <button onclick="buscarAvatar()">Continuar</button>
-    </div>
+    <!-- Top Bar -->
+    <header class="header">
+      <div class="logo-container">
+        <div class="logo-icon">
+          <i class="fa-solid fa-cube"></i>
+        </div>
+        <div class="logo-text">
+          <h1>Robux Rewards</h1>
+          <span>PLATAFORMA INTERATIVA</span>
+        </div>
+      </div>
+      <div class="badge-secure">
+        <i class="fa-solid fa-shield-halved"></i> Seguro
+      </div>
+    </header>
 
-    <!-- PASSO 2: Confirmar Avatar e Selecionar Robux -->
-    <div id="step-2" class="step-2">
-      <div class="avatar-box" id="avatarBox">
-        <img id="avatarImg" src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-76D5D8A31D0850D695C058ADDCDE4C5F-Png/150/150/AvatarHeadshot/Png/noFilter" alt="Avatar Roblox">
-        <p id="userDisplay" style="font-weight: bold; margin-top: 8px; color: #38bdf8;"></p>
-        <p style="font-size: 12px; color: #10b981; margin: 4px 0 0 0;">✔ Conta encontrada com sucesso!</p>
+    <!-- Step 1: User Search -->
+    <main>
+      <section class="card">
+        <div class="section-title">
+          <i class="fa-solid fa-user-gear"></i> 1. Identificação da Conta
+        </div>
+        <div class="section-subtitle">Insira seu @username público sem necessidade de login</div>
+
+        <div class="search-box">
+          <div class="input-wrapper">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" id="usernameInput" class="input-field" placeholder="Ex: taktikarr8" autocomplete="off" />
+          </div>
+          <button id="searchBtn" class="btn-primary" onclick="searchRobloxUser()">
+            <i class="fa-solid fa-magnifying-glass"></i> Buscar Avatar
+          </button>
+        </div>
+
+        <!-- Alert Error Box -->
+        <div id="alertBox" class="alert-box alert-error" style="display: none;">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span id="alertMessage">Usuário não encontrado. Verifique o nome digitado.</span>
+        </div>
+
+        <!-- User Profile Card -->
+        <div id="profileResult" class="profile-result" style="display: none;">
+          <div class="avatar-frame">
+            <img id="avatarImg" src="" alt="Avatar Headshot" />
+          </div>
+          <div class="profile-info">
+            <h3 id="profileName">Username <i class="fa-solid fa-circle-check verified-icon"></i></h3>
+            <div id="profileDisplayName" class="display-name">@DisplayName</div>
+            <p id="profileId">ID: -------</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step 2: Robux Options -->
+      <section class="card">
+        <div class="section-title">
+          <i class="fa-solid fa-coins"></i> 2. Escolha a Quantidade
+        </div>
+        <div class="section-subtitle">Selecione o pacote desejado para a simulação de resgate</div>
+
+        <div class="robux-grid">
+          <div class="robux-card" onclick="selectRobux(100, this)">
+            <div class="robux-icon"><i class="fa-solid fa-hexagon-nodes"></i></div>
+            <div class="robux-amount">100</div>
+            <div class="robux-label">ROBUX</div>
+          </div>
+
+          <div class="robux-card" onclick="selectRobux(400, this)">
+            <div class="robux-icon"><i class="fa-solid fa-hexagon-nodes"></i></div>
+            <div class="robux-amount">400</div>
+            <div class="robux-label">ROBUX</div>
+          </div>
+
+          <div class="robux-card active" onclick="selectRobux(800, this)">
+            <span class="popular-badge">Mais Popular</span>
+            <div class="robux-icon"><i class="fa-solid fa-hexagon-nodes"></i></div>
+            <div class="robux-amount">800</div>
+            <div class="robux-label">ROBUX</div>
+          </div>
+
+          <div class="robux-card" onclick="selectRobux(1000, this)">
+            <div class="robux-icon"><i class="fa-solid fa-hexagon-nodes"></i></div>
+            <div class="robux-amount">1.000</div>
+            <div class="robux-label">ROBUX</div>
+          </div>
+
+          <div class="robux-card" style="grid-column: span 2;" onclick="selectRobux(2000, this)">
+            <div class="robux-icon"><i class="fa-solid fa-hexagon-nodes"></i></div>
+            <div class="robux-amount">2.000</div>
+            <div class="robux-label">ROBUX (Pacote Especial)</div>
+          </div>
+        </div>
+
+        <button id="claimBtn" class="btn-claim" disabled onclick="startClaimProcess()">
+          <i class="fa-solid fa-bolt"></i> RESGATAR RECOMPENSA
+        </button>
+      </section>
+
+      <!-- Disclaimer Footer -->
+      <footer class="disclaimer-card">
+        <strong>Aviso de Segurança:</strong> Este site é uma simulação demonstrativa e informativa. Nunca solicitamos senha, códigos de acesso ou dados sensíveis. Nenhuma moeda virtual garantida.
+      </footer>
+    </main>
+
+  </div>
+
+  <!-- Modal de Progresso -->
+  <div id="progressModal" class="modal-overlay">
+    <div class="modal-card">
+      <h3 id="modalStatusTitle" style="color: #fff; font-size: 1.2rem;">Processando Solicitação...</h3>
+      
+      <div class="progress-bar-container">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+      <div id="progressPercent" style="color: var(--cyan-neon); font-size: 0.9rem; font-weight: 700;">0%</div>
+
+      <div id="terminalLogs" class="terminal-logs">
+        > Conectando ao servidor...<br>
       </div>
 
-      <p>Escolha a quantidade de Robux:</p>
-      <select id="robuxAmount">
-        <option value="400">400 Robux</option>
-        <option value="800">800 Robux</option>
-        <option value="1700">1.700 Robux</option>
-        <option value="4500">4.500 Robux</option>
-      </select>
-
-      <button id="generateBtn" onclick="gerarRecompensa()">Gerar Robux</button>
+      <button id="closeModalBtn" class="btn-primary" style="margin-top: 20px; display: none;" onclick="closeModal()">
+        Concluir
+      </button>
     </div>
-
-    <!-- BOTÃO FINAL: TikTok -->
-    <a id="tiktokLink" class="tiktok-btn" href="SEU_LINK_DO_TIKTOK_AQUI" target="_blank">
-      Resgatar agora
-    </a>
   </div>
 
   <script>
-    function buscarAvatar() {
-      const username = document.getElementById('username').value.trim();
-      if (!username) {
-        alert('Por favor, digite seu nome de usuário!');
+    // OPÇÃO DE CLOUDFLARE WORKER PARA EVITAR BLOQUEIOS DE CORS NO GITHUB PAGES
+    const CLOUDFLARE_WORKER_URL = ""; 
+
+    let selectedRobuxAmount = 800;
+    let currentUserId = null;
+    let currentUsername = "";
+    let currentSearchId = 0; // Previne condições de corrida
+
+    function updateClaimButtonState() {
+      const claimBtn = document.getElementById('claimBtn');
+      claimBtn.disabled = !(currentUserId && selectedRobuxAmount);
+    }
+
+    function showAlert(msg) {
+      const alertBox = document.getElementById('alertBox');
+      const alertMsg = document.getElementById('alertMessage');
+      alertMsg.innerText = msg;
+      alertBox.style.display = 'flex';
+    }
+
+    function hideAlert() {
+      document.getElementById('alertBox').style.display = 'none';
+    }
+
+    function selectRobux(amount, el) {
+      selectedRobuxAmount = amount;
+      document.querySelectorAll('.robux-card').forEach(card => card.classList.remove('active'));
+      el.classList.add('active');
+      updateClaimButtonState();
+    }
+
+    async function searchRobloxUser() {
+      const usernameInput = document.getElementById('usernameInput').value.trim();
+      const searchBtn = document.getElementById('searchBtn');
+      const profileResult = document.getElementById('profileResult');
+
+      if (!usernameInput) {
+        showAlert("Por favor, digite um nome de usuário do Roblox.");
         return;
       }
 
-      // Avança o passo de forma limpa e instantânea
-      document.getElementById('step-1').style.display = 'none';
-      document.getElementById('step-2').style.display = 'block';
-      document.getElementById('avatarBox').style.display = 'block';
-      
-      // Exibe o nome que o utilizador digitou na tela
-      document.getElementById('userDisplay').innerText = "@" + username;
+      const searchId = ++currentSearchId;
+      hideAlert();
+      profileResult.style.display = 'none';
+      currentUserId = null;
+      currentUsername = "";
+      updateClaimButtonState();
+
+      searchBtn.disabled = true;
+      searchBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Buscando...`;
+
+      try {
+        let userData = null;
+
+        if (CLOUDFLARE_WORKER_URL) {
+          const res = await fetch(`${CLOUDFLARE_WORKER_URL}/user/${encodeURIComponent(usernameInput)}`);
+          const data = await res.json();
+          if (data && data.data && data.data.length > 0) {
+            userData = data.data[0];
+          }
+        } else {
+          userData = await fetchUserWithFallbackProxies(usernameInput);
+        }
+
+        if (searchId !== currentSearchId) return; // Ignora buscas antigas
+
+        if (!userData) {
+          showAlert("Usuário não encontrado. Verifique se o nome de usuário está correto.");
+          return;
+        }
+
+        const userId = userData.id;
+        const username = userData.name;
+        const displayName = userData.displayName || username;
+
+        // Buscar Avatar Headshot real
+        const avatarUrl = await fetchAvatarUrl(userId);
+
+        if (searchId !== currentSearchId) return;
+
+        if (!avatarUrl) {
+          showAlert("Não foi possível carregar a imagem real do avatar. Tente novamente.");
+          return;
+        }
+
+        currentUserId = userId;
+        currentUsername = username;
+
+        // Atualizar Interface com dados verificados
+        document.getElementById('profileName').innerHTML = `${username} <i class="fa-solid fa-circle-check verified-icon"></i>`;
+        document.getElementById('profileDisplayName').innerText = `@${displayName}`;
+        document.getElementById('profileId').innerText = `ID: ${userId}`;
+        document.getElementById('avatarImg').src = avatarUrl;
+        
+        profileResult.style.display = 'flex';
+        updateClaimButtonState();
+
+      } catch (err) {
+        console.error("Erro na busca:", err);
+        if (searchId === currentSearchId) {
+          showAlert("Falha de conexão com a API do Roblox. Tente novamente em instantes.");
+        }
+      } finally {
+        if (searchId === currentSearchId) {
+          searchBtn.disabled = false;
+          searchBtn.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i> Buscar Avatar`;
+        }
+      }
     }
 
-    function gerarRecompensa() {
-      const btn = document.getElementById('generateBtn');
-      btn.innerText = 'Processando...';
-      btn.disabled = true;
+    async function fetchUserWithFallbackProxies(username) {
+      const payload = { usernames: [username], excludeBannedUsers: true };
 
-      setTimeout(() => {
-        btn.style.display = 'none';
-        document.getElementById('https://www.tiktok.com/d/4/ZS9yuJhL6u1LL-SOZ0t/').style.display = 'block';
-      }, 1500);
+      // Tentativa 1: corsproxy.io
+      try {
+        const res = await fetch(`https://corsproxy.io/?https://users.roblox.com/v1/usernames/users`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.data && data.data.length > 0) return data.data[0];
+        }
+      } catch (e) {
+        console.warn("Proxy 1 (corsproxy) falhou:", e);
+      }
+
+      // Tentativa 2: codetabs
+      try {
+        const res = await fetch(`https://api.codetabs.com/v1/proxy?quest=https://users.roblox.com/v1/usernames/users`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.data && data.data.length > 0) return data.data[0];
+        }
+      } catch (e) {
+        console.warn("Proxy 2 (codetabs) falhou:", e);
+      }
+
+      return null;
+    }
+
+    async function fetchAvatarUrl(userId) {
+      const rawUrl = `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=150x150&format=Png&isCircular=false`;
+      
+      try {
+        let data = null;
+
+        if (CLOUDFLARE_WORKER_URL) {
+          const res = await fetch(`${CLOUDFLARE_WORKER_URL}/avatar/${userId}`);
+          data = await res.json();
+        } else {
+          const res = await fetch(`https://corsproxy.io/?${encodeURIComponent(rawUrl)}`);
+          if (res.ok) {
+            data = await res.json();
+          }
+        }
+
+        if (data && data.data && data.data.length > 0) {
+          const item = data.data[0];
+          // Validação estrita do estado Completed e existência de imageUrl
+          if (item.state === "Completed" && item.imageUrl) {
+            return item.imageUrl;
+          }
+        }
+      } catch (e) {
+        console.error("Erro ao buscar avatar:", e);
+      }
+      return null;
+    }
+
+    function startClaimProcess() {
+      if (!currentUsername || !currentUserId || !selectedRobuxAmount) return;
+
+      const modal = document.getElementById('progressModal');
+      const progressBar = document.getElementById('progressBar');
+      const progressPercent = document.getElementById('progressPercent');
+      const terminal = document.getElementById('terminalLogs');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+      const modalTitle = document.getElementById('modalStatusTitle');
+
+      modal.classList.add('active');
+      progressBar.style.width = '0%';
+      progressPercent.innerText = '0%';
+      closeModalBtn.style.display = 'none';
+      modalTitle.innerText = "Processando Solicitação...";
+      terminal.innerHTML = `> Iniciando sessão para @${currentUsername}...<br>`;
+
+      let progress = 0;
+      const logs = [
+        `> Localizando conta (ID: ${currentUserId})...`,
+        `> Reservando lote de ${selectedRobuxAmount} Robux...`,
+        `> Autenticando com servidores do Roblox...`,
+        `> Validação de segurança concluída.`,
+        `> Finalizando processo demonstrativo...`
+      ];
+
+      let logIndex = 0;
+
+      const interval = setInterval(() => {
+        progress += 20;
+        progressBar.style.width = `${progress}%`;
+        progressPercent.innerText = `${progress}%`;
+
+        if (logIndex < logs.length) {
+          terminal.innerHTML += `${logs[logIndex]}<br>`;
+          terminal.scrollTop = terminal.scrollHeight;
+          logIndex++;
+        }
+
+        if (progress >= 100) {
+          clearInterval(interval);
+          modalTitle.innerText = "Simulação Concluída!";
+          terminal.innerHTML += `<br><span style="color: var(--success);">> Operação demonstrativa efetuada com sucesso!</span>`;
+          closeModalBtn.style.display = 'block';
+        }
+      }, 800);
+    }
+
+    function closeModal() {
+      document.getElementById('progressModal').classList.remove('active');
     }
   </script>
-
 </body>
 </html>

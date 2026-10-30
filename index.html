@@ -1,341 +1,161 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robux Rewards - Resgate de Robux Grátis</title>
-    <style>
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-color: #f8fafc;
-            --primary-color: #00a2ff;
-            --primary-hover: #0082cc;
-            --success-color: #10b981;
-            --error-color: #ef4444;
-            --border-radius: 12px;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            background-color: var(--card-bg);
-            width: 100%;
-            max-width: 480px;
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            text-align: center;
-        }
-
-        h1 {
-            color: var(--primary-color);
-            margin-bottom: 8px;
-            font-size: 28px;
-        }
-
-        p.subtitle {
-            color: #94a3b8;
-            font-size: 14px;
-            margin-bottom: 24px;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-            color: #cbd5e1;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 12px 16px;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            background-color: #0f172a;
-            color: white;
-            font-size: 16px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        input[type="text"]:focus {
-            border-color: var(--primary-color);
-        }
-
-        .btn {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.2s, transform 0.1s;
-        }
-
-        .btn:hover {
-            background-color: var(--primary-hover);
-        }
-
-        .btn:active {
-            transform: scale(0.98);
-        }
-
-        .user-profile {
-            margin-top: 24px;
-            padding: 16px;
-            background-color: #0f172a;
-            border-radius: 8px;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .avatar-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 3px solid var(--primary-color);
-            background-color: #1e293b;
-            object-fit: cover;
-        }
-
-        .username-display {
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .robux-options {
-            margin-top: 24px;
-            display: none;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .robux-card {
-            background-color: #0f172a;
-            border: 2px solid #334155;
-            border-radius: 8px;
-            padding: 16px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .robux-card:hover {
-            border-color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        .robux-amount {
-            font-size: 20px;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        .error-message {
-            margin-top: 16px;
-            color: var(--error-color);
-            font-size: 14px;
-            display: none;
-        }
-
-        .loading-spinner {
-            display: none;
-            margin: 16px auto;
-            border: 4px solid #334155;
-            border-top: 4px solid var(--primary-color);
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recompensas Robux</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: #0f172a;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .card {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+    h2 {
+      margin-top: 0;
+      color: #38bdf8;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      background: #0f172a;
+      color: #fff;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #0284c7;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #0369a1;
+    }
+    .avatar-box {
+      margin: 20px 0;
+      display: none;
+    }
+    .avatar-box img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid #38bdf8;
+    }
+    .tiktok-btn {
+      display: none;
+      width: 100%;
+      padding: 16px;
+      background: #fe2c55;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-top: 20px;
+      box-sizing: border-border-box;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(254, 44, 85, 0.4);
+    }
+    .tiktok-btn:hover {
+      background: #e02648;
+    }
+    .step-2 {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Robux Rewards</h1>
-        <p class="subtitle">Insira o seu nome de utilizador do Roblox para resgatar Robux</p>
-
-        <div class="input-group">
-            <label for="username">Nome de Utilizador no Roblox:</label>
-            <input type="text" id="username" placeholder="Ex: RobloxUser123" autocomplete="off">
-        </div>
-
-        <button class="btn" id="search-btn" onclick="buscarUsuarioRoblox()">Buscar Utilizador</button>
-
-        <div class="loading-spinner" id="spinner"></div>
-        <div class="error-message" id="error-msg"></div>
-
-        <div class="user-profile" id="user-profile">
-            <img id="avatar-img" class="avatar-img" alt="Avatar Roblox" src="">
-            <span class="username-display" id="user-display"></span>
-        </div>
-
-        <div class="robux-options" id="robux-options">
-            <div class="robux-card" onclick="selecionarRobux(400)">
-                <div class="robux-amount">400</div>
-                <div>Robux</div>
-            </div>
-            <div class="robux-card" onclick="selecionarRobux(800)">
-                <div class="robux-amount">800</div>
-                <div>Robux</div>
-            </div>
-            <div class="robux-card" onclick="selecionarRobux(1700)">
-                <div class="robux-amount">1700</div>
-                <div>Robux</div>
-            </div>
-            <div class="robux-card" onclick="selecionarRobux(4500)">
-                <div class="robux-amount">4500</div>
-                <div>Robux</div>
-            </div>
-        </div>
+  <div class="card">
+    <h2>Recompensas Robux</h2>
+    
+    <!-- PASSO 1: Nome de usuário -->
+    <div id="step-1">
+      <p>Digite seu nome de usuário do Roblox:</p>
+      <input type="text" id="username" placeholder="Ex: NickRoblox">
+      <button onclick="buscarAvatar()">Continuar</button>
     </div>
 
-    <script>
-        async function fetchComFallback(urls, options = {}) {
-            let ultimoErro = null;
-            for (const url of urls) {
-                try {
-                    const res = await fetch(url, options);
-                    if (res.ok) {
-                        return await res.json();
-                    }
-                } catch (e) {
-                    ultimoErro = e;
-                }
-            }
-            throw ultimoErro || new Error('Falha ao conectar com os servidores do Roblox.');
-        }
+    <!-- PASSO 2: Confirmar Avatar e Selecionar Robux -->
+    <div id="step-2" class="step-2">
+      <div class="avatar-box" id="avatarBox">
+        <img id="avatarImg" src="" alt="Avatar Roblox">
+        <p id="userDisplay" style="font-weight: bold; margin-top: 8px;"></p>
+      </div>
 
-        async function buscarUsuarioRoblox() {
-            const usernameInput = document.getElementById('username').value.trim();
-            const errorMsg = document.getElementById('error-msg');
-            const spinner = document.getElementById('spinner');
-            const userProfile = document.getElementById('user-profile');
-            const robuxOptions = document.getElementById('robux-options');
-            const avatarImg = document.getElementById('avatar-img');
-            const userDisplay = document.getElementById('user-display');
+      <p>Escolha a quantidade de Robux:</p>
+      <select id="robuxAmount">
+        <option value="400">400 Robux</option>
+        <option value="800">800 Robux</option>
+        <option value="1700">1.700 Robux</option>
+        <option value="4500">4.500 Robux</option>
+      </select>
 
-            // Resetar estados anteriores
-            errorMsg.style.display = 'none';
-            userProfile.style.display = 'none';
-            robuxOptions.style.display = 'none';
-            avatarImg.src = '';
-            errorMsg.innerText = '';
+      <button id="generateBtn" onclick="gerarRecompensa()">Gerar Robux</button>
+    </div>
 
-            if (!usernameInput) {
-                errorMsg.innerText = 'Por favor, insira o seu nome de utilizador do Roblox.';
-                errorMsg.style.display = 'block';
-                return;
-            }
+    <!-- BOTÃO FINAL: TikTok -->
+    <a id="tiktokLink" class="tiktok-btn" href="https://www.tiktok.com/d/4/ZS9ymnvVtERuk-l1Wxs/" target="_blank">
+      Resgatar agora
+    </a>
+  </div>
 
-            spinner.style.display = 'block';
+  <script>
+    function buscarAvatar() {
+      const username = document.getElementById('username').value.trim();
+      if (!username) {
+        alert('Por favor, digite seu nome de usuário!');
+        return;
+      }
 
-            try {
-                // 1. Procurar Utilizador pelo Username nas APIs do Roblox (usando proxies compatíveis)
-                const searchUrls = [
-                    `https://users.roproxy.com/v1/usernames/users`,
-                    `https://api.allorigins.win/raw?url=` + encodeURIComponent(`https://users.roblox.com/v1/usernames/users`)
-                ];
+      // Mostra o avatar fictício/padrão para validação
+      document.getElementById('step-1').style.display = 'none';
+      document.getElementById('step-2').style.display = 'block';
+      document.getElementById('avatarBox').style.display = 'block';
+      
+      document.getElementById('userDisplay').innerText = username;
+      // Ícone padrão do Roblox
+      document.getElementById('avatarImg').src = 'https://tr.rbxcdn.com/30DAY-AvatarHeadshot-76D5D8A31D0850D695C058ADDCDE4C5F-Png/150/150/AvatarHeadshot/Png/noFilter';
+    }
 
-                const searchPayload = {
-                    usernames: [usernameInput],
-                    excludeBannedUsers: true
-                };
+    function gerarRecompensa() {
+      const btn = document.getElementById('generateBtn');
+      btn.innerText = 'Processando...';
+      btn.disabled = true;
 
-                let searchData;
-                try {
-                    searchData = await fetchComFallback(searchUrls, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(searchPayload)
-                    });
-                } catch (e) {
-                    // Fallback para pesquisa GET se o POST falhar por bloqueio de CORS
-                    const getUrl = `https://users.roproxy.com/v1/users/search?keyword=${encodeURIComponent(usernameInput)}&limit=10`;
-                    searchData = await fetchComFallback([getUrl]);
-                }
+      setTimeout(() => {
+        btn.style.display = 'none';
+        document.getElementById('tiktokLink').style.display = 'block';
+      }, 1500);
+    }
+  </script>
 
-                let userId = null;
-                let exactUsername = usernameInput;
-
-                if (searchData.data && searchData.data.length > 0) {
-                    const matchedUser = searchData.data.find(u => u.name.toLowerCase() === usernameInput.toLowerCase()) || searchData.data[0];
-                    userId = matchedUser.id;
-                    exactUsername = matchedUser.name || matchedUser.requestedUsername || usernameInput;
-                }
-
-                if (!userId) {
-                    throw new Error('Utilizador não encontrado no Roblox. Verifique se digitou o nome corretamente.');
-                }
-
-                // 2. Procurar Miniatura Oficial do Avatar (headshot)
-                const thumbUrls = [
-                    `https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds=${userId}&size=150x150&format=Png&isCircular=false`,
-                    `https://api.allorigins.win/raw?url=` + encodeURIComponent(`https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=150x150&format=Png&isCircular=false`)
-                ];
-
-                const thumbData = await fetchComFallback(thumbUrls);
-
-                if (!thumbData.data || thumbData.data.length === 0) {
-                    throw new Error('Não foi possível carregar a imagem de avatar deste utilizador.');
-                }
-
-                const avatarData = thumbData.data[0];
-
-                // 3. Validar se o estado da imagem é "Completed"
-                if (avatarData.state !== 'Completed' || !avatarData.imageUrl) {
-                    throw new Error('A imagem do avatar ainda não está pronta ou indisponível.');
-                }
-
-                // 4. Mostrar os dados no ecrã caso corra tudo bem
-                avatarImg.src = avatarData.imageUrl;
-                userDisplay.innerText = exactUsername;
-
-                spinner.style.display = 'none';
-                userProfile.style.display = 'flex';
-                robuxOptions.style.display = 'grid';
-
-            } catch (err) {
-                spinner.style.display = 'none';
-                errorMsg.innerText = err.message || 'Erro ao procurar utilizador do Roblox.';
-                errorMsg.style.display = 'block';
-            }
-        }
-
-        function selecionarRobux(quantidade) {
-            alert(`A processar o resgate de ${quantidade} Robux...`);
-        }
-    </script>
 </body>
 </html>

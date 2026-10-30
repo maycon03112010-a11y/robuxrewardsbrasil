@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROBUX REWARDS - Plataforma Interativa</title>
+    <title>ROBUX REWARDS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
@@ -26,7 +26,6 @@
             --text-secondary: #94a3b8;
             --glass-bg: rgba(17, 24, 39, 0.75);
             --border-glow-purple: rgba(139, 92, 246, 0.4);
-            --border-glow-cyan: rgba(6, 182, 212, 0.4);
         }
 
         body {
@@ -37,7 +36,6 @@
             line-height: 1.6;
         }
 
-        /* Cabeçalho */
         header {
             background: var(--glass-bg);
             backdrop-filter: blur(12px);
@@ -55,9 +53,7 @@
             padding: 0 1rem;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 1rem;
+            justify-content: center;
         }
 
         .logo-section {
@@ -88,49 +84,18 @@
             background-clip: text;
         }
 
-        .logo-text p {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
-
-        .security-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 8px;
-            color: #10b981;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 2.5rem 1rem;
-        }
-
-        .step-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-            border-radius: 50%;
-            font-weight: 700;
-            margin-right: 0.75rem;
+            padding: 3rem 1rem;
         }
 
         .section-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
+            margin-bottom: 2rem;
+            text-align: center;
         }
 
         .glass-card {
@@ -138,135 +103,16 @@
             backdrop-filter: blur(12px);
             border: 1px solid var(--border-glow-purple);
             border-radius: 20px;
-            padding: 2rem;
+            padding: 2.5rem;
             box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--border-glow-purple);
             transition: all 0.3s ease;
-            margin-bottom: 2rem;
         }
 
-        .glass-card:hover {
-            box-shadow: 0 12px 50px rgba(0, 0, 0, 0.5), 0 0 25px var(--border-glow-purple);
-            transform: translateY(-3px);
-        }
-
-        /* Busca de Usuário */
-        .search-input-group {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .search-input {
-            flex: 1;
-            padding: 1.15rem 1.5rem;
-            background: var(--bg-secondary);
-            border: 2px solid rgba(139, 92, 246, 0.2);
-            border-radius: 14px;
-            color: var(--text-primary);
-            font-size: 1rem;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .search-input:focus {
-            border-color: var(--accent-purple);
-            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
-        }
-
-        .search-btn {
-            padding: 1.15rem 2rem;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-            border: none;
-            border-radius: 14px;
-            color: white;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .search-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .search-btn:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.35);
-        }
-
-        /* Perfil Card */
-        .profile-card {
-            display: none;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 1.75rem;
-            background: var(--glass-bg);
-            border: 2px solid var(--border-glow-cyan);
-            border-radius: 18px;
-            margin-bottom: 1rem;
-            animation: fadeIn 0.5s ease forwards;
-        }
-
-        .profile-card.visible {
-            display: flex;
-        }
-
-        .avatar-container {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            border: 4px solid var(--accent-cyan);
-            overflow: hidden;
-            flex-shrink: 0;
-            box-shadow: 0 0 20px var(--border-glow-cyan);
-        }
-
-        .avatar-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .profile-info {
-            flex: 1;
-        }
-
-        .profile-username {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .verified-badge {
-            color: var(--accent-cyan);
-            font-size: 1.3rem;
-        }
-
-        .profile-displayname {
-            color: var(--text-secondary);
-            font-size: 1.15rem;
-            margin-bottom: 0.6rem;
-        }
-
-        .profile-id {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        /* Pacotes Robux */
         .packages-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 1.25rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .package-card {
@@ -304,7 +150,7 @@
 
         .package-card.selected {
             border-color: var(--accent-cyan);
-            box-shadow: 0 0 25px var(--border-glow-cyan);
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
         }
 
         .package-card:hover {
@@ -326,14 +172,14 @@
         }
 
         .package-icon {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--accent-robux);
             margin-bottom: 0.75rem;
         }
 
         .package-value {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
+            font-size: 2.1rem;
             font-weight: 700;
             margin-bottom: 0.3rem;
             background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
@@ -344,14 +190,12 @@
 
         .package-label {
             color: var(--text-secondary);
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 500;
         }
 
-        /* Botão Principal */
         .action-section {
             text-align: center;
-            margin-top: 2rem;
         }
 
         .main-btn {
@@ -365,23 +209,14 @@
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            opacity: 0.4;
-            pointer-events: none;
-            box-shadow: 0 0 0 transparent;
-        }
-
-        .main-btn.active {
-            opacity: 1;
-            pointer-events: all;
             box-shadow: 0 8px 30px rgba(139, 92, 246, 0.4);
         }
 
-        .main-btn:hover:not(:disabled) {
+        .main-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 40px rgba(139, 92, 246, 0.5);
         }
 
-        /* Modal */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -443,7 +278,6 @@
             font-size: 1.05rem;
         }
 
-        /* Tela Final */
         .final-screen {
             display: none;
         }
@@ -498,16 +332,6 @@
             color: var(--text-primary);
         }
 
-        .external-link-warning {
-            padding: 1rem;
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            border-radius: 10px;
-            color: #f59e0b;
-            margin-bottom: 2rem;
-            font-size: 0.9rem;
-        }
-
         .tiktok-btn {
             padding: 1.3rem 3rem;
             background: linear-gradient(135deg, #000000, #25f4ee, #fe2c55);
@@ -527,84 +351,17 @@
             box-shadow: 0 10px 30px rgba(37, 244, 238, 0.3);
         }
 
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--accent-cyan);
-            animation: spin 1s linear infinite;
-        }
-
-        .error-message {
-            padding: 1rem;
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            border-radius: 12px;
-            color: #ef4444;
-            margin: 1rem 0;
-            display: none;
-        }
-
-        .success-message {
-            padding: 1rem;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 12px;
-            color: #10b981;
-            margin: 1rem 0;
-            display: none;
-        }
-
-        /* Aviso */
-        .disclaimer {
-            margin-top: 3rem;
-            padding: 1.75rem;
-            background: rgba(139, 92, 246, 0.08);
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            border-radius: 16px;
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Responsivo */
         @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .search-input-group {
-                flex-direction: column;
-            }
-
-            .profile-card {
-                flex-direction: column;
-                text-align: center;
-            }
-
             .packages-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
             .glass-card {
                 padding: 1.5rem;
-            }
-
-            .modal-content {
-                padding: 2rem 1.5rem;
             }
         }
 
@@ -612,13 +369,8 @@
             .packages-grid {
                 grid-template-columns: 1fr;
             }
-
             .package-card.popular {
                 transform: none;
-            }
-
-            .logo-text h1 {
-                font-size: 1.2rem;
             }
         }
     </style>
@@ -632,52 +384,14 @@
                 </div>
                 <div class="logo-text">
                     <h1>ROBUX REWARDS</h1>
-                    <p>PLATAFORMA INTERATIVA</p>
                 </div>
-            </div>
-            <div class="security-badge">
-                <i class="fas fa-shield-alt"></i>
-                <span>Conexão Segura</span>
             </div>
         </div>
     </header>
 
     <div class="container">
         <div class="glass-card">
-            <h2 class="section-title">
-                <span class="step-number">1</span>
-                IDENTIFICAÇÃO DA CONTA
-            </h2>
-            <div class="search-input-group">
-                <input type="text" id="usernameInput" class="search-input" placeholder="Digite seu nome de usuário do Roblox, exemplo: taktikarr8">
-                <button id="searchBtn" class="search-btn">
-                    <i class="fas fa-search"></i>
-                    BUSCAR AVATAR
-                </button>
-            </div>
-            <div id="errorMessage" class="error-message"></div>
-            <div id="successMessage" class="success-message"></div>
-            
-            <div id="profileCard" class="profile-card">
-                <div class="avatar-container">
-                    <img id="avatarImg" class="avatar-img" alt="Avatar do usuário">
-                </div>
-                <div class="profile-info">
-                    <div class="profile-username">
-                        <span id="profileUsername"></span>
-                        <span class="verified-badge"><i class="fas fa-check-circle"></i></span>
-                    </div>
-                    <div class="profile-displayname" id="profileDisplayname"></div>
-                    <div class="profile-id">ID da Conta: <span id="profileId"></span></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="glass-card">
-            <h2 class="section-title">
-                <span class="step-number">2</span>
-                ESCOLHA A QUANTIDADE
-            </h2>
+            <h2 class="section-title">ESCOLHA A QUANTIDADE DE ROBUX</h2>
             <div class="packages-grid">
                 <div class="package-card" data-value="100">
                     <div class="package-icon"><i class="fas fa-coins"></i></div>
@@ -711,13 +425,8 @@
                 <button id="mainBtn" class="main-btn">RESGATAR AGORA</button>
             </div>
         </div>
-
-        <div class="disclaimer">
-            <strong>Aviso Importante:</strong> Este é um projeto de demonstração independente e não possui vínculo oficial com a Roblox. Não solicitamos senhas, dados pessoais ou realizamos transferências reais de Robux. Todas as funcionalidades são apenas para fins de demonstração.
-        </div>
     </div>
 
-    <!-- Modal de Processamento -->
     <div id="modalOverlay" class="modal-overlay">
         <div class="modal-content" id="processingScreen">
             <h2 class="section-title">Processando Solicitação</h2>
@@ -725,30 +434,21 @@
                 <div id="progressBar" class="progress-bar"></div>
             </div>
             <div class="progress-text" id="progressText">0%</div>
-            <p class="status-message" id="statusMessage">Iniciando processo de demonstração...</p>
+            <p class="status-message" id="statusMessage">Iniciando processo...</p>
         </div>
 
         <div class="modal-content final-screen" id="finalScreen">
             <div class="success-icon">
                 <i class="fas fa-check-circle"></i>
             </div>
-            <h2 class="final-title">Demonstração Concluída!</h2>
-            <p class="status-message">Sua solicitação foi processada com sucesso. Siga as instruções no TikTok para finalizar.</p>
+            <h2 class="final-title">PROCESSO CONCLUÍDO!</h2>
+            <p class="status-message">Clique no botão abaixo para finalizar</p>
             
             <div class="final-details">
-                <div class="detail-item">
-                    <span class="detail-label">Usuário Roblox:</span>
-                    <span class="detail-value" id="finalUsername">-</span>
-                </div>
                 <div class="detail-item">
                     <span class="detail-label">Quantidade Selecionada:</span>
                     <span class="detail-value" id="finalRobux">- Robux</span>
                 </div>
-            </div>
-
-            <div class="external-link-warning">
-                <i class="fas fa-info-circle"></i>
-                Você será redirecionado para um site externo. Este projeto não é afiliado ao TikTok nem à Roblox.
             </div>
 
             <button id="tiktokBtn" class="tiktok-btn">
@@ -758,28 +458,11 @@
     </div>
 
     <script>
-        // Estado da aplicação
         const state = {
-            selectedPackage: null,
-            userIdentified: false,
-            userId: null,
-            username: null,
-            avatarLoaded: false,
-            isSearching: false,
-            lastSearchAbortController: null,
+            selectedPackage: 800,
             TIKTOK_LINK: 'https://www.tiktok.com/d/4/ZS9yuJhL6u1LL-SOZ0t/'
         };
 
-        // Elementos DOM
-        const usernameInput = document.getElementById('usernameInput');
-        const searchBtn = document.getElementById('searchBtn');
-        const errorMessage = document.getElementById('errorMessage');
-        const successMessage = document.getElementById('successMessage');
-        const profileCard = document.getElementById('profileCard');
-        const avatarImg = document.getElementById('avatarImg');
-        const profileUsername = document.getElementById('profileUsername');
-        const profileDisplayname = document.getElementById('profileDisplayname');
-        const profileId = document.getElementById('profileId');
         const packageCards = document.querySelectorAll('.package-card');
         const mainBtn = document.getElementById('mainBtn');
         const modalOverlay = document.getElementById('modalOverlay');
@@ -788,142 +471,8 @@
         const statusMessage = document.getElementById('statusMessage');
         const processingScreen = document.getElementById('processingScreen');
         const finalScreen = document.getElementById('finalScreen');
-        const finalUsername = document.getElementById('finalUsername');
         const finalRobux = document.getElementById('finalRobux');
         const tiktokBtn = document.getElementById('tiktokBtn');
-
-        // Utilitários
-        function showError(message) {
-            errorMessage.textContent = message;
-            errorMessage.style.display = 'block';
-            successMessage.style.display = 'none';
-        }
-
-        function showSuccess(message) {
-            successMessage.textContent = message;
-            successMessage.style.display = 'block';
-            errorMessage.style.display = 'none';
-        }
-
-        function hideMessages() {
-            errorMessage.style.display = 'none';
-            successMessage.style.display = 'none';
-        }
-
-        function updateMainButton() {
-            if (state.userIdentified && state.avatarLoaded && state.selectedPackage !== null) {
-                mainBtn.classList.add('active');
-            } else {
-                mainBtn.classList.remove('active');
-            }
-        }
-
-        // Busca de usuário Roblox
-        async function searchRobloxUser(username) {
-            if (state.isSearching) return;
-            
-            state.isSearching = true;
-            searchBtn.disabled = true;
-            searchBtn.innerHTML = '<span class="loading"></span> BUSCANDO...';
-            hideMessages();
-            profileCard.classList.remove('visible');
-            state.userIdentified = false;
-            state.avatarLoaded = false;
-            state.username = null;
-            updateMainButton();
-
-            // Aborta busca anterior se existir
-            if (state.lastSearchAbortController) {
-                state.lastSearchAbortController.abort();
-            }
-            const abortController = new AbortController();
-            state.lastSearchAbortController = abortController;
-
-            try {
-                const cleanUsername = username.trim();
-                if (!cleanUsername) {
-                    showError('Digite um nome de usuário válido');
-                    return;
-                }
-
-                // Busca ID do usuário
-                const usersResponse = await fetch('https://users.roblox.com/v1/usernames/users', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        usernames: [cleanUsername],
-                        excludeBannedUsers: true
-                    }),
-                    signal: abortController.signal
-                });
-
-                if (!usersResponse.ok) throw new Error('Erro na conexão com a API');
-                const usersData = await usersResponse.json();
-
-                if (usersData.data.length === 0) {
-                    showError('Nenhum usuário encontrado com esse nome de usuário');
-                    return;
-                }
-
-                const userData = usersData.data[0];
-                state.userId = userData.id;
-                state.username = userData.name;
-
-                // Busca avatar
-                let avatarLoaded = false;
-                let retryCount = 0;
-                let avatarUrl;
-
-                while (!avatarLoaded && retryCount < 5) {
-                    const thumbnailResponse = await fetch(`https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userData.id}&size=150x150&format=Png&isCircular=false`, {
-                        signal: abortController.signal
-                    });
-
-                    if (!thumbnailResponse.ok) throw new Error('Erro ao carregar avatar');
-                    const thumbnailData = await thumbnailResponse.json();
-
-                    if (thumbnailData.data[0].state === 'Completed') {
-                        avatarUrl = thumbnailData.data[0].imageUrl;
-                        avatarLoaded = true;
-                    } else {
-                        retryCount++;
-                        await new Promise(resolve => setTimeout(resolve, 600));
-                    }
-                }
-
-                if (!avatarLoaded) {
-                    showError('Não foi possível carregar o avatar do usuário');
-                    return;
-                }
-
-                // Atualiza interface
-                profileUsername.textContent = '@' + userData.name;
-                profileDisplayname.textContent = userData.displayName;
-                profileId.textContent = userData.id;
-                avatarImg.src = avatarUrl;
-
-                await new Promise((resolve, reject) => {
-                    avatarImg.onload = resolve;
-                    avatarImg.onerror = reject;
-                });
-
-                state.userIdentified = true;
-                state.avatarLoaded = true;
-                profileCard.classList.add('visible');
-                showSuccess('Usuário identificado com sucesso!');
-                updateMainButton();
-
-            } catch (err) {
-                if (err.name !== 'AbortError') {
-                    console.error(err);
-                    showError('Ocorreu um erro de conexão. Tente novamente mais tarde.');
-                }
-            } finally {
-                state.isSearching = false;
-                searchBtn.disabled = false;
-                searchBtn.innerHTML = '<i class="fas fa-search"></i> BUSCAR AVATAR';
-            }
-        }
 
         // Seleção de pacote
         packageCards.forEach(card => {
@@ -931,25 +480,22 @@
                 packageCards.forEach(c => c.classList.remove('selected'));
                 card.classList.add('selected');
                 state.selectedPackage = parseInt(card.dataset.value);
-                updateMainButton();
             });
         });
 
         // Ação principal
         mainBtn.addEventListener('click', () => {
-            if (!mainBtn.classList.contains('active')) return;
-            
             modalOverlay.classList.add('visible');
             processingScreen.style.display = 'block';
             finalScreen.classList.remove('visible');
             
             let progress = 0;
             const messages = [
-                'Iniciando processo de demonstração...',
-                'Validando identificação da conta...',
-                'Processando solicitação de recompensa...',
-                'Conectando aos servidores de demonstração...',
-                'Finalizando processo...'
+                'Iniciando processo...',
+                'Validando solicitação...',
+                'Processando requisição...',
+                'Conectando aos servidores...',
+                'Finalizando...'
             ];
 
             const interval = setInterval(() => {
@@ -958,10 +504,8 @@
                     progress = 100;
                     clearInterval(interval);
                     
-                    // Mostra tela final
                     setTimeout(() => {
                         processingScreen.style.display = 'none';
-                        finalUsername.textContent = '@' + state.username;
                         finalRobux.textContent = state.selectedPackage + ' Robux';
                         finalScreen.classList.add('visible');
                     }, 500);
@@ -979,31 +523,8 @@
             window.open(state.TIKTOK_LINK, '_blank');
         });
 
-        // Fechar modal ao clicar fora
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) {
-                modalOverlay.classList.remove('visible');
-                progressBar.style.width = '0%';
-                progressText.textContent = '0%';
-                statusMessage.textContent = 'Iniciando processo de demonstração...';
-                finalScreen.classList.remove('visible');
-            }
-        });
-
-        // Eventos de busca
-        searchBtn.addEventListener('click', () => {
-            searchRobloxUser(usernameInput.value);
-        });
-
-        usernameInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                searchRobloxUser(usernameInput.value);
-            }
-        });
-
         // Seleciona pacote padrão
         document.querySelector('[data-value="800"]').classList.add('selected');
-        state.selectedPackage = 800;
     </script>
 </body>
 </html>

@@ -1,530 +1,902 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROBUX REWARDS</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robux Rewards | Plataforma Interativa</title>
+  
+  <!-- Fontes do Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome para Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-        :root {
-            --bg-primary: #070a13;
-            --bg-secondary: #111827;
-            --accent-purple: #8b5cf6;
-            --accent-blue: #3b82f6;
-            --accent-cyan: #06b6d4;
-            --accent-robux: #e2231a;
-            --text-primary: #ffffff;
-            --text-secondary: #94a3b8;
-            --glass-bg: rgba(17, 24, 39, 0.75);
-            --border-glow-purple: rgba(139, 92, 246, 0.4);
-        }
+  <style>
+    :root {
+      --bg-dark: #0b0e14;
+      --card-bg: rgba(18, 24, 38, 0.8);
+      --card-border: rgba(138, 43, 226, 0.3);
+      --purple-main: #8a2be2;
+      --purple-glow: #9d4edd;
+      --cyan-neon: #00f0ff;
+      --blue-accent: #2563eb;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --danger: #ef4444;
+      --success: #10b981;
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #030712 0%, #0f172a 50%, #070a13 100%);
-            min-height: 100vh;
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
 
-        header {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-glow-purple);
-            padding: 1.25rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-        }
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(138, 43, 226, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(0, 240, 255, 0.1) 0%, transparent 40%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 15px 40px 15px;
+    }
 
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
+    /* Top Bar */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 15px 20px;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      margin-bottom: 25px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
 
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 0 15px var(--border-glow-purple);
-        }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-        .logo-text h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--purple-main), var(--cyan-neon));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 3rem 1rem;
-        }
+    .logo-text h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      background: linear-gradient(90deg, #fff, var(--cyan-neon));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-transform: uppercase;
+    }
 
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.75rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
+    .logo-text span {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      display: block;
+      letter-spacing: 0.5px;
+    }
 
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-glow-purple);
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--border-glow-purple);
-            transition: all 0.3s ease;
-        }
+    .badge-secure {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--success);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
 
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 1.25rem;
-            margin-bottom: 2.5rem;
-        }
+    /* Steps Control */
+    .step-content {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
 
-        .package-card {
-            background: var(--glass-bg);
-            border: 2px solid rgba(139, 92, 246, 0.2);
-            border-radius: 18px;
-            padding: 1.75rem 1.25rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+    .step-content.active {
+      display: block;
+    }
 
-        .package-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-        .package-card:hover::before, .package-card.selected::before {
-            transform: scaleX(1);
-        }
+    /* Main Cards */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      position: relative;
+      overflow: hidden;
+    }
 
-        .package-card.popular {
-            border-color: var(--accent-purple);
-            transform: scale(1.05);
-        }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--purple-main), var(--cyan-neon), transparent);
+    }
 
-        .package-card.selected {
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
-        }
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .package-card:hover {
-            border-color: var(--accent-purple);
-            transform: translateY(-4px);
-        }
+    .section-title i {
+      color: var(--cyan-neon);
+    }
 
-        .popular-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
-            padding: 0.3rem 1.25rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
-        }
+    .section-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
 
-        .package-icon {
-            font-size: 2.2rem;
-            color: var(--accent-robux);
-            margin-bottom: 0.75rem;
-        }
+    /* Robux Grid Options */
+    .robux-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
 
-        .package-value {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.1rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+    .robux-card {
+      background: rgba(10, 14, 23, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 16px 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
 
-        .package-label {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
+    .robux-card:hover {
+      border-color: var(--purple-glow);
+      transform: translateY(-2px);
+      background: rgba(138, 43, 226, 0.1);
+    }
 
-        .action-section {
-            text-align: center;
-        }
+    .robux-card.active {
+      border-color: var(--cyan-neon);
+      background: rgba(0, 240, 255, 0.12);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    }
 
-        .main-btn {
-            padding: 1.4rem 3.5rem;
-            background: linear-gradient(135deg, var(--accent-purple), #7c3aed);
-            border: none;
-            border-radius: 16px;
-            color: white;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.4);
-        }
+    .robux-icon {
+      width: 38px;
+      height: 38px;
+      margin: 0 auto 8px auto;
+      background: rgba(0, 240, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan-neon);
+      font-size: 1.2rem;
+    }
 
-        .main-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.5);
-        }
+    .robux-amount {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #fff;
+    }
 
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            padding: 1rem;
-        }
+    .robux-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
 
-        .modal-overlay.visible {
-            display: flex;
-        }
+    .popular-badge {
+      position: absolute;
+      top: -8px;
+      right: 10px;
+      background: linear-gradient(90deg, var(--purple-main), var(--purple-glow));
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      text-transform: uppercase;
+    }
 
-        .modal-content {
-            background: var(--bg-secondary);
-            border: 2px solid var(--border-glow-purple);
-            border-radius: 24px;
-            padding: 3rem;
-            max-width: 550px;
-            width: 100%;
-            text-align: center;
-            animation: fadeIn 0.4s ease forwards;
-            box-shadow: 0 0 60px rgba(139, 92, 246, 0.2);
-        }
+    /* Buttons */
+    .btn-primary {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--purple-main), #6b21a8);
+      border: none;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(138, 43, 226, 0.4);
+    }
 
-        .progress-bar-container {
-            width: 100%;
-            height: 14px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            margin: 2rem 0;
-            overflow: hidden;
-        }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(138, 43, 226, 0.6);
+    }
 
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
-            border-radius: 8px;
-            width: 0%;
-            transition: width 0.4s ease;
-        }
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
 
-        .progress-text {
-            font-size: 1.4rem;
-            font-weight: 700;
-            font-family: 'Orbitron', sans-serif;
-            margin-bottom: 1rem;
-            color: var(--accent-cyan);
-        }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-main);
+      padding: 12px;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
 
-        .status-message {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-size: 1.05rem;
-        }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
 
-        .final-screen {
-            display: none;
-        }
+    /* Input & Search Section */
+    .search-box {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-        .final-screen.visible {
-            display: block;
-            animation: fadeIn 0.5s ease forwards;
-        }
+    .input-wrapper {
+      position: relative;
+    }
 
-        .success-icon {
-            font-size: 4rem;
-            color: #10b981;
-            margin-bottom: 1.5rem;
-        }
+    .input-wrapper i {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
 
-        .final-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+    .input-field {
+      width: 100%;
+      padding: 14px 16px 14px 48px;
+      background: rgba(10, 14, 23, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
 
-        .final-details {
-            background: var(--glass-bg);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            text-align: left;
-        }
+    .input-field:focus {
+      border-color: var(--purple-glow);
+      box-shadow: 0 0 15px rgba(157, 78, 221, 0.3);
+    }
 
-        .detail-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
+    /* User Profile Display */
+    .profile-result {
+      margin-top: 20px;
+      padding: 16px;
+      background: rgba(10, 14, 23, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
 
-        .detail-item:last-child {
-            border-bottom: none;
-        }
+    .avatar-frame {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--purple-main) 0%, transparent 70%);
+      border: 2px solid var(--cyan-neon);
+      padding: 2px;
+      flex-shrink: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .detail-label {
-            color: var(--text-secondary);
-        }
+    .avatar-frame img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
 
-        .detail-value {
-            font-weight: 600;
-            color: var(--text-primary);
-        }
+    .profile-info h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-        .tiktok-btn {
-            padding: 1.3rem 3rem;
-            background: linear-gradient(135deg, #000000, #25f4ee, #fe2c55);
-            border: none;
-            border-radius: 16px;
-            color: white;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
+    .display-name {
+      font-size: 0.8rem;
+      color: var(--cyan-neon);
+      margin-top: 2px;
+    }
 
-        .tiktok-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(37, 244, 238, 0.3);
-        }
+    .verified-icon {
+      color: var(--cyan-neon);
+      font-size: 0.9rem;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .profile-info p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
 
-        @media (max-width: 768px) {
-            .packages-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .glass-card {
-                padding: 1.5rem;
-            }
-        }
+    /* Alert Message Box */
+    .alert-box {
+      margin-top: 15px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      line-height: 1.4;
+    }
 
-        @media (max-width: 480px) {
-            .packages-grid {
-                grid-template-columns: 1fr;
-            }
-            .package-card.popular {
-                transform: none;
-            }
-        }
-    </style>
+    .alert-error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
+    }
+
+    .alert-success {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #a7f3d0;
+    }
+
+    /* Mission Actions */
+    .mission-box {
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .mission-icon {
+      font-size: 3rem;
+      color: var(--cyan-neon);
+      margin-bottom: 15px;
+      background: rgba(0, 240, 255, 0.1);
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+      border-radius: 50%;
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid rgba(0, 240, 255, 0.3);
+    }
+
+    /* Final Screen */
+    .final-card {
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .final-trophy {
+      font-size: 4rem;
+      color: #f59e0b;
+      margin-bottom: 20px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Footer / Disclaimer */
+    .disclaimer-card {
+      background: rgba(18, 24, 38, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .disclaimer-card strong {
+      color: var(--text-main);
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo-section">
-                <div class="logo-icon">
-                    <i class="fas fa-gem"></i>
-                </div>
-                <div class="logo-text">
-                    <h1>ROBUX REWARDS</h1>
-                </div>
-            </div>
+
+  <div class="container">
+    
+    <!-- Top Bar -->
+    <header class="header">
+      <div class="logo-container">
+        <div class="logo-icon">
+          <i class="fa-solid fa-cube"></i>
         </div>
+        <div class="logo-text">
+          <h1>Robux Rewards</h1>
+          <span>PLATAFORMA INTERATIVA</span>
+        </div>
+      </div>
+      <div class="badge-secure">
+        <i class="fa-solid fa-shield-halved"></i> Seguro
+      </div>
     </header>
 
-    <div class="container">
-        <div class="glass-card">
-            <h2 class="section-title">ESCOLHA A QUANTIDADE DE ROBUX</h2>
-            <div class="packages-grid">
-                <div class="package-card" data-value="100">
-                    <div class="package-icon"><i class="fas fa-coins"></i></div>
-                    <div class="package-value">100</div>
-                    <div class="package-label">ROBUX</div>
-                </div>
-                <div class="package-card" data-value="400">
-                    <div class="package-icon"><i class="fas fa-coins"></i></div>
-                    <div class="package-value">400</div>
-                    <div class="package-label">ROBUX</div>
-                </div>
-                <div class="package-card popular" data-value="800">
-                    <div class="popular-badge">MAIS POPULAR</div>
-                    <div class="package-icon"><i class="fas fa-coins"></i></div>
-                    <div class="package-value">800</div>
-                    <div class="package-label">ROBUX</div>
-                </div>
-                <div class="package-card" data-value="1000">
-                    <div class="package-icon"><i class="fas fa-coins"></i></div>
-                    <div class="package-value">1.000</div>
-                    <div class="package-label">ROBUX</div>
-                </div>
-                <div class="package-card" data-value="2000">
-                    <div class="package-icon"><i class="fas fa-coins"></i></div>
-                    <div class="package-value">2.000</div>
-                    <div class="package-label">ROBUX</div>
-                </div>
-            </div>
-
-            <div class="action-section">
-                <button id="mainBtn" class="main-btn">RESGATAR AGORA</button>
-            </div>
+    <main>
+      <!-- ETAPA 1: ESCOLHA DE ROBUX -->
+      <section id="step1" class="card step-content active">
+        <div class="section-title">
+          <i class="fa-solid fa-gift"></i> Escolha seu prêmio abaixo
         </div>
-    </div>
+        <div class="section-subtitle">Seja bem-vindo! 🎉 Selecione uma das opções de pacotes disponíveis para iniciar a simulação.</div>
 
-    <div id="modalOverlay" class="modal-overlay">
-        <div class="modal-content" id="processingScreen">
-            <h2 class="section-title">Processando Solicitação</h2>
-            <div class="progress-bar-container">
-                <div id="progressBar" class="progress-bar"></div>
-            </div>
-            <div class="progress-text" id="progressText">0%</div>
-            <p class="status-message" id="statusMessage">Iniciando processo...</p>
+        <div class="robux-grid">
+          <div class="robux-card" onclick="selectRobux(100, this)">
+            <div class="robux-icon"><i class="fa-solid fa-hexagon-nodes"></i></div>
+            <div class="robux-amount">100</div>
+            <div class="robux-label">ROBUX</div>
+          </div>
+
+          <div class="robux-card" onclick="selectRobux(400, this)">
+            <div class="robux-icon"><i class="fa-solid fa-hexagon-nodes"></i></div>
+            <div class="robux-amount">400</div>
+            <div class="robux-label">ROBUX</div>
+          </div>
+
+          <div class="robux-card active" onclick="selectRobux(800, this)">
+            <span class="popular-badge">Mais Popular</span>
+            <div class="robux-icon"><i class="fa-solid fa-hexagon-nodes"></i></div>
+            <div class="robux-amount">800</div>
+            <div class="robux-label">ROBUX</div>
+          </div>
+
+          <div class="robux-card" onclick="selectRobux(1000, this)">
+            <div class="robux-icon"><i class="fa-solid fa-hexagon-nodes"></i></div>
+            <div class="robux-amount">1.000</div>
+            <div class="robux-label">ROBUX</div>
+          </div>
+
+          <div class="robux-card" style="grid-column: span 2;" onclick="selectRobux(2000, this)">
+            <div class="robux-icon"><i class="fa-solid fa-hexagon-nodes"></i></div>
+            <div class="robux-amount">2.000</div>
+            <div class="robux-label">ROBUX (Pacote Especial)</div>
+          </div>
         </div>
 
-        <div class="modal-content final-screen" id="finalScreen">
-            <div class="success-icon">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <h2 class="final-title">PROCESSO CONCLUÍDO!</h2>
-            <p class="status-message">Clique no botão abaixo para finalizar</p>
-            
-            <div class="final-details">
-                <div class="detail-item">
-                    <span class="detail-label">Quantidade Selecionada:</span>
-                    <span class="detail-value" id="finalRobux">- Robux</span>
-                </div>
-            </div>
+        <button class="btn-primary" onclick="goToStep(2)">
+          AVANÇAR <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </section>
 
-            <button id="tiktokBtn" class="tiktok-btn">
-                <i class="fab fa-tiktok"></i> RESGATAR AGORA
-            </button>
+      <!-- ETAPA 2: CONFIRMAÇÃO DO ROBLOX -->
+      <section id="step2" class="card step-content">
+        <div class="section-title">
+          <i class="fa-solid fa-user-gear"></i> Confirmação do Roblox
         </div>
-    </div>
+        <div class="section-subtitle">Insira seu @username público do Roblox para localizar sua conta (nunca pedimos senha).</div>
 
-    <script>
-        const state = {
-            selectedPackage: 800,
-            TIKTOK_LINK: 'https://www.tiktok.com/d/4/ZS9yuJhL6u1LL-SOZ0t/'
-        };
+        <div class="search-box">
+          <div class="input-wrapper">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" id="usernameInput" class="input-field" placeholder="Ex: taktikarr8" autocomplete="off" />
+          </div>
+          <button id="searchBtn" class="btn-primary" onclick="searchRobloxUser()">
+            <i class="fa-solid fa-magnifying-glass"></i> Buscar Conta
+          </button>
+        </div>
 
-        const packageCards = document.querySelectorAll('.package-card');
-        const mainBtn = document.getElementById('mainBtn');
-        const modalOverlay = document.getElementById('modalOverlay');
-        const progressBar = document.getElementById('progressBar');
-        const progressText = document.getElementById('progressText');
-        const statusMessage = document.getElementById('statusMessage');
-        const processingScreen = document.getElementById('processingScreen');
-        const finalScreen = document.getElementById('finalScreen');
-        const finalRobux = document.getElementById('finalRobux');
-        const tiktokBtn = document.getElementById('tiktokBtn');
+        <!-- Alerta de Erro -->
+        <div id="alertBox" class="alert-box alert-error" style="display: none;">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span id="alertMessage">Usuário não encontrado.</span>
+        </div>
 
-        // Seleção de pacote
-        packageCards.forEach(card => {
-            card.addEventListener('click', () => {
-                packageCards.forEach(c => c.classList.remove('selected'));
-                card.classList.add('selected');
-                state.selectedPackage = parseInt(card.dataset.value);
-            });
+        <!-- Perfil Encontrado -->
+        <div id="profileResult" class="profile-result" style="display: none;">
+          <div class="avatar-frame">
+            <img id="avatarImg" src="" alt="Avatar Headshot" />
+          </div>
+          <div class="profile-info">
+            <h3 id="profileName">Username <i class="fa-solid fa-circle-check verified-icon"></i></h3>
+            <div id="profileDisplayName" class="display-name">@DisplayName</div>
+            <p id="profileId">ID: -------</p>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+          <button class="btn-secondary" onclick="goToStep(1)">
+            <i class="fa-solid fa-arrow-left"></i> Voltar
+          </button>
+          <button id="toStep3Btn" class="btn-primary" disabled onclick="goToStep(3)">
+            Continuar <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- ETAPA 3: MISSÃO INSTAGRAM -->
+      <section id="step3" class="card step-content">
+        <div class="section-title">
+          <i class="fa-brands fa-instagram"></i> Etapa 3: Instagram
+        </div>
+        <div class="section-subtitle">Visite nosso perfil oficial para continuar a sua demonstração.</div>
+
+        <div class="mission-box">
+          <div class="mission-icon">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+          <p style="font-size: 0.95rem; margin-bottom: 20px; color: var(--text-main);">
+            Visite nosso Instagram para continuar!<br>
+            <strong style="color: var(--cyan-neon);">@centralrbxbr</strong>
+          </p>
+
+          <a href="https://www.instagram.com/centralrbxbr/" target="_blank" class="btn-primary" style="text-decoration: none; margin-bottom: 15px;" onclick="unlockInstagramMission()">
+            <i class="fa-solid fa-external-link-alt"></i> VISITAR INSTAGRAM
+          </a>
+
+          <div id="instaAlert" class="alert-box alert-success" style="display: none; justify-content: center; margin-bottom: 15px;">
+            <i class="fa-solid fa-check-circle"></i> Visita registrada com sucesso!
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+          <button class="btn-secondary" onclick="goToStep(2)">
+            <i class="fa-solid fa-arrow-left"></i> Voltar
+          </button>
+          <button id="toStep4Btn" class="btn-primary" disabled onclick="goToStep(4)">
+            Continuar <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- ETAPA 4: ETAPA TIKTOK LITE -->
+      <section id="step4" class="card step-content">
+        <div class="section-title">
+          <i class="fa-brands fa-tiktok"></i> Etapa 4: TikTok Lite
+        </div>
+        <div class="section-subtitle">Quase lá! Visite o link do TikTok Lite para prosseguir.</div>
+
+        <div class="mission-box">
+          <div class="mission-icon" style="color: #ff0050; background: rgba(255, 0, 80, 0.1); border-color: rgba(255, 0, 80, 0.3);">
+            <i class="fa-brands fa-tiktok"></i>
+          </div>
+          <p style="font-size: 0.95rem; margin-bottom: 20px; color: var(--text-main);">
+            Descubra conteúdos exclusivos visitando nossa recomendação no TikTok Lite!
+          </p>
+
+          <a href="https://www.tiktok.com/d/4/ZS9yuJhL6u1LL-SOZ0t/" target="_blank" class="btn-primary" style="text-decoration: none; background: linear-gradient(135deg, #ff0050, #00f0ff); margin-bottom: 15px;" onclick="unlockTikTokMission()">
+            <i class="fa-solid fa-external-link-alt"></i> VISITAR TIKTOK LITE
+          </a>
+
+          <div id="tikTokAlert" class="alert-box alert-success" style="display: none; justify-content: center; margin-bottom: 15px;">
+            <i class="fa-solid fa-check-circle"></i> Acesso registrado com sucesso!
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+          <button class="btn-secondary" onclick="goToStep(3)">
+            <i class="fa-solid fa-arrow-left"></i> Voltar
+          </button>
+          <button id="toFinalBtn" class="btn-primary" disabled onclick="goToStep(5)">
+            Finalizar Demonstração <i class="fa-solid fa-flag-checkered"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- ETAPA 5: TELA FINAL -->
+      <section id="step5" class="card step-content">
+        <div class="final-card">
+          <div class="final-trophy">
+            <i class="fa-solid fa-award"></i>
+          </div>
+          <h2 style="font-family: 'Orbitron', sans-serif; font-size: 1.4rem; margin-bottom: 10px; color: #fff;">Simulação Concluída!</h2>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5;">
+            Parabéns, <strong id="finalUsername" style="color: var(--cyan-neon);">@Jogador</strong>! Você concluiu todas as etapas interativas da demonstração para o pacote de <strong id="finalRobux" style="color: #fff;">800 Robux</strong>.
+          </p>
+
+          <div class="alert-box alert-success" style="margin-bottom: 20px; text-align: left;">
+            <i class="fa-solid fa-circle-info"></i>
+            <span><strong>Aviso Importante:</strong> Esta plataforma é estritamente demonstrativa e lúdica. Nenhum Robux real foi transferido ou creditado em sua conta do Roblox.</span>
+          </div>
+
+          <button class="btn-primary" onclick="resetDemo()">
+            <i class="fa-solid fa-rotate-right"></i> Reiniciar Demonstração
+          </button>
+        </div>
+      </section>
+
+      <!-- Rodapé / Disclaimer -->
+      <footer class="disclaimer-card">
+        <strong>Aviso de Segurança:</strong> Este site é uma demonstração interativa educacional. Nunca solicitamos senha, PIN ou dados confidenciais da conta Roblox.
+      </footer>
+    </main>
+
+  </div>
+
+  <script>
+    // Configuração opcional de Cloudflare Worker se desejar hospedar em nuvem, senão usa proxies públicos integrados
+    const CLOUDFLARE_WORKER_URL = ""; 
+
+    let selectedRobuxAmount = 800;
+    let currentUserId = null;
+    let currentUsername = "";
+    let currentSearchId = 0;
+
+    // Função de transição entre etapas
+    function goToStep(stepNumber) {
+      document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+      document.getElementById(`step${stepNumber}`).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (stepNumber === 5) {
+        document.getElementById('finalUsername').innerText = `@${currentUsername || 'Jogador'}`;
+        document.getElementById('finalRobux').innerText = `${selectedRobuxAmount} Robux`;
+      }
+    }
+
+    // Seleção dos pacotes de Robux
+    function selectRobux(amount, el) {
+      selectedRobuxAmount = amount;
+      document.querySelectorAll('.robux-card').forEach(card => card.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    // Alertas visuais
+    function showAlert(msg) {
+      const alertBox = document.getElementById('alertBox');
+      const alertMsg = document.getElementById('alertMessage');
+      alertMsg.innerText = msg;
+      alertBox.style.display = 'flex';
+    }
+
+    function hideAlert() {
+      document.getElementById('alertBox').style.display = 'none';
+    }
+
+    // Busca de usuário Roblox via API oficial
+    async function searchRobloxUser() {
+      const usernameInput = document.getElementById('usernameInput').value.trim();
+      const searchBtn = document.getElementById('searchBtn');
+      const profileResult = document.getElementById('profileResult');
+      const toStep3Btn = document.getElementById('toStep3Btn');
+
+      if (!usernameInput) {
+        showAlert("Por favor, digite um nome de usuário do Roblox.");
+        return;
+      }
+
+      const searchId = ++currentSearchId;
+      hideAlert();
+      profileResult.style.display = 'none';
+      currentUserId = null;
+      currentUsername = "";
+      toStep3Btn.disabled = true;
+
+      searchBtn.disabled = true;
+      searchBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Buscando...`;
+
+      try {
+        let userData = null;
+
+        if (CLOUDFLARE_WORKER_URL) {
+          const res = await fetch(`${CLOUDFLARE_WORKER_URL}/user/${encodeURIComponent(usernameInput)}`);
+          const data = await res.json();
+          if (data && data.data && data.data.length > 0) {
+            userData = data.data[0];
+          }
+        } else {
+          userData = await fetchUserWithFallbackProxies(usernameInput);
+        }
+
+        if (searchId !== currentSearchId) return;
+
+        if (!userData) {
+          showAlert("Conta não encontrada. Verifique se o nome digitado está correto.");
+          return;
+        }
+
+        const userId = userData.id;
+        const username = userData.name;
+        const displayName = userData.displayName || username;
+
+        // Buscar miniatura real do avatar
+        const avatarUrl = await fetchAvatarUrl(userId);
+
+        if (searchId !== currentSearchId) return;
+
+        if (!avatarUrl) {
+          showAlert("Não foi possível carregar a miniatura do avatar. Tente novamente.");
+          return;
+        }
+
+        currentUserId = userId;
+        currentUsername = username;
+
+        // Atualizar interface com os dados reais
+        document.getElementById('profileName').innerHTML = `${username} <i class="fa-solid fa-circle-check verified-icon"></i>`;
+        document.getElementById('profileDisplayName').innerText = `@${displayName}`;
+        document.getElementById('profileId').innerText = `ID: ${userId}`;
+        document.getElementById('avatarImg').src = avatarUrl;
+        
+        profileResult.style.display = 'flex';
+        toStep3Btn.disabled = false;
+
+      } catch (err) {
+        console.error("Erro na busca:", err);
+        if (searchId === currentSearchId) {
+          showAlert("Erro de conexão ao acessar a API do Roblox. Tente novamente em instantes.");
+        }
+      } finally {
+        if (searchId === currentSearchId) {
+          searchBtn.disabled = false;
+          searchBtn.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i> Buscar Conta`;
+        }
+      }
+    }
+
+    async function fetchUserWithFallbackProxies(username) {
+      const payload = { usernames: [username], excludeBannedUsers: true };
+
+      // Tentativa via corsproxy.io
+      try {
+        const res = await fetch(`https://corsproxy.io/?https://users.roblox.com/v1/usernames/users`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
         });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.data && data.data.length > 0) return data.data[0];
+        }
+      } catch (e) {
+        console.warn("Tentativa de proxy 1 falhou:", e);
+      }
 
-        // Ação principal
-        mainBtn.addEventListener('click', () => {
-            modalOverlay.classList.add('visible');
-            processingScreen.style.display = 'block';
-            finalScreen.classList.remove('visible');
-            
-            let progress = 0;
-            const messages = [
-                'Iniciando processo...',
-                'Validando solicitação...',
-                'Processando requisição...',
-                'Conectando aos servidores...',
-                'Finalizando...'
-            ];
-
-            const interval = setInterval(() => {
-                progress += Math.random() * 12 + 6;
-                if (progress >= 100) {
-                    progress = 100;
-                    clearInterval(interval);
-                    
-                    setTimeout(() => {
-                        processingScreen.style.display = 'none';
-                        finalRobux.textContent = state.selectedPackage + ' Robux';
-                        finalScreen.classList.add('visible');
-                    }, 500);
-                }
-
-                progressBar.style.width = `${progress}%`;
-                progressText.textContent = `${Math.round(progress)}%`;
-                const messageIndex = Math.min(Math.floor(progress / 22), messages.length - 1);
-                statusMessage.textContent = messages[messageIndex];
-            }, 450);
+      // Tentativa secundária via codetabs
+      try {
+        const res = await fetch(`https://api.codetabs.com/v1/proxy?quest=https://users.roblox.com/v1/usernames/users`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
         });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.data && data.data.length > 0) return data.data[0];
+        }
+      } catch (e) {
+        console.warn("Tentativa de proxy 2 falhou:", e);
+      }
 
-        // Redirecionamento TikTok
-        tiktokBtn.addEventListener('click', () => {
-            window.open(state.TIKTOK_LINK, '_blank');
-        });
+      return null;
+    }
 
-        // Seleciona pacote padrão
-        document.querySelector('[data-value="800"]').classList.add('selected');
-    </script>
+    async function fetchAvatarUrl(userId) {
+      const rawUrl = `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=150x150&format=Png&isCircular=false`;
+      
+      try {
+        let data = null;
+
+        if (CLOUDFLARE_WORKER_URL) {
+          const res = await fetch(`${CLOUDFLARE_WORKER_URL}/avatar/${userId}`);
+          data = await res.json();
+        } else {
+          const res = await fetch(`https://corsproxy.io/?${encodeURIComponent(rawUrl)}`);
+          if (res.ok) {
+            data = await res.json();
+          }
+        }
+
+        if (data && data.data && data.data.length > 0) {
+          const item = data.data[0];
+          if (item.state === "Completed" && item.imageUrl) {
+            return item.imageUrl;
+          }
+        }
+      } catch (e) {
+        console.error("Erro ao buscar avatar:", e);
+      }
+      return null;
+    }
+
+    // Liberação automática ao retornar da aba do Instagram
+    function unlockInstagramMission() {
+      document.getElementById('instaAlert').style.display = 'flex';
+      document.getElementById('toStep4Btn').disabled = false;
+    }
+
+    // Liberação automática ao retornar da aba do TikTok Lite
+    function unlockTikTokMission() {
+      document.getElementById('tikTokAlert').style.display = 'flex';
+      document.getElementById('toFinalBtn').disabled = false;
+    }
+
+    // Reiniciar demonstração
+    function resetDemo() {
+      currentUserId = null;
+      currentUsername = "";
+      document.getElementById('usernameInput').value = '';
+      document.getElementById('profileResult').style.display = 'none';
+      document.getElementById('toStep3Btn').disabled = true;
+      document.getElementById('instaAlert').style.display = 'none';
+      document.getElementById('toStep4Btn').disabled = true;
+      document.getElementById('tikTokAlert').style.display = 'none';
+      document.getElementById('toFinalBtn').disabled = true;
+      goToStep(1);
+    }
+  </script>
 </body>
 </html>

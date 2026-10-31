@@ -301,102 +301,6 @@
       background: rgba(255, 255, 255, 0.12);
     }
 
-    /* Input & Search Section */
-    .search-box {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .input-wrapper {
-      position: relative;
-    }
-
-    .input-wrapper i {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-      font-size: 1.1rem;
-    }
-
-    .input-field {
-      width: 100%;
-      padding: 14px 16px 14px 48px;
-      background: rgba(10, 14, 23, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      color: #fff;
-      font-size: 0.95rem;
-      outline: none;
-      transition: all 0.3s ease;
-    }
-
-    .input-field:focus {
-      border-color: var(--purple-glow);
-      box-shadow: 0 0 15px rgba(157, 78, 221, 0.3);
-    }
-
-    /* User Profile Display */
-    .profile-result {
-      margin-top: 20px;
-      padding: 16px;
-      background: rgba(10, 14, 23, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .avatar-frame {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      background: radial-gradient(circle, var(--purple-main) 0%, transparent 70%);
-      border: 2px solid var(--cyan-neon);
-      padding: 2px;
-      flex-shrink: 0;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .avatar-frame img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .profile-info h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .display-name {
-      font-size: 0.8rem;
-      color: var(--cyan-neon);
-      margin-top: 2px;
-    }
-
-    .verified-icon {
-      color: var(--cyan-neon);
-      font-size: 0.9rem;
-    }
-
-    .profile-info p {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
     /* Alert Message Box */
     .alert-box {
       margin-top: 15px;
@@ -407,12 +311,6 @@
       align-items: center;
       gap: 10px;
       line-height: 1.4;
-    }
-
-    .alert-error {
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      color: #fca5a5;
     }
 
     .alert-success {
@@ -543,55 +441,10 @@
         </button>
       </section>
 
-      <!-- ETAPA 2: CONFIRMAÇÃO DO ROBLOX -->
+      <!-- ETAPA 2: MISSÃO INSTAGRAM -->
       <section id="step2" class="card step-content">
         <div class="section-title">
-          <i class="fa-solid fa-user-gear"></i> Confirmação do Roblox
-        </div>
-        <div class="section-subtitle">Insira seu @username público do Roblox para localizar sua conta (nunca pedimos senha).</div>
-
-        <div class="search-box">
-          <div class="input-wrapper">
-            <i class="fa-solid fa-user"></i>
-            <input type="text" id="usernameInput" class="input-field" placeholder="Ex: taktikarr8" autocomplete="off" />
-          </div>
-          <button id="searchBtn" class="btn-primary" onclick="searchRobloxUser()">
-            <i class="fa-solid fa-magnifying-glass"></i> Buscar Conta
-          </button>
-        </div>
-
-        <!-- Alerta de Erro -->
-        <div id="alertBox" class="alert-box alert-error" style="display: none;">
-          <i class="fa-solid fa-triangle-exclamation"></i>
-          <span id="alertMessage">Usuário não encontrado.</span>
-        </div>
-
-        <!-- Perfil Encontrado -->
-        <div id="profileResult" class="profile-result" style="display: none;">
-          <div class="avatar-frame">
-            <img id="avatarImg" src="" alt="Avatar Headshot" />
-          </div>
-          <div class="profile-info">
-            <h3 id="profileName">Username <i class="fa-solid fa-circle-check verified-icon"></i></h3>
-            <div id="profileDisplayName" class="display-name">@DisplayName</div>
-            <p id="profileId">ID: -------</p>
-          </div>
-        </div>
-
-        <div style="display: flex; gap: 10px; margin-top: 20px;">
-          <button class="btn-secondary" onclick="goToStep(1)">
-            <i class="fa-solid fa-arrow-left"></i> Voltar
-          </button>
-          <button id="toStep3Btn" class="btn-primary" disabled onclick="goToStep(3)">
-            Continuar <i class="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
-      </section>
-
-      <!-- ETAPA 3: MISSÃO INSTAGRAM -->
-      <section id="step3" class="card step-content">
-        <div class="section-title">
-          <i class="fa-brands fa-instagram"></i> Etapa 3: Instagram
+          <i class="fa-brands fa-instagram"></i> Etapa 2: Instagram
         </div>
         <div class="section-subtitle">Visite nosso perfil oficial para continuar a sua demonstração.</div>
 
@@ -614,19 +467,19 @@
         </div>
 
         <div style="display: flex; gap: 10px;">
-          <button class="btn-secondary" onclick="goToStep(2)">
+          <button class="btn-secondary" onclick="goToStep(1)">
             <i class="fa-solid fa-arrow-left"></i> Voltar
           </button>
-          <button id="toStep4Btn" class="btn-primary" disabled onclick="goToStep(4)">
+          <button id="toStep3Btn" class="btn-primary" disabled onclick="goToStep(3)">
             Continuar <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
       </section>
 
-      <!-- ETAPA 4: ETAPA TIKTOK LITE -->
-      <section id="step4" class="card step-content">
+      <!-- ETAPA 3: ETAPA TIKTOK LITE -->
+      <section id="step3" class="card step-content">
         <div class="section-title">
-          <i class="fa-brands fa-tiktok"></i> Etapa 4: TikTok Lite
+          <i class="fa-brands fa-tiktok"></i> Etapa 3: TikTok Lite
         </div>
         <div class="section-subtitle">Quase lá! Visite o link do TikTok Lite para prosseguir.</div>
 
@@ -648,29 +501,29 @@
         </div>
 
         <div style="display: flex; gap: 10px;">
-          <button class="btn-secondary" onclick="goToStep(3)">
+          <button class="btn-secondary" onclick="goToStep(2)">
             <i class="fa-solid fa-arrow-left"></i> Voltar
           </button>
-          <button id="toFinalBtn" class="btn-primary" disabled onclick="goToStep(5)">
+          <button id="toFinalBtn" class="btn-primary" disabled onclick="goToStep(4)">
             Finalizar Demonstração <i class="fa-solid fa-flag-checkered"></i>
           </button>
         </div>
       </section>
 
-      <!-- ETAPA 5: TELA FINAL -->
-      <section id="step5" class="card step-content">
+      <!-- ETAPA 4: TELA FINAL -->
+      <section id="step4" class="card step-content">
         <div class="final-card">
           <div class="final-trophy">
             <i class="fa-solid fa-award"></i>
           </div>
           <h2 style="font-family: 'Orbitron', sans-serif; font-size: 1.4rem; margin-bottom: 10px; color: #fff;">Simulação Concluída!</h2>
           <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5;">
-            Parabéns, <strong id="finalUsername" style="color: var(--cyan-neon);">@Jogador</strong>! Você concluiu todas as etapas interativas da demonstração para o pacote de <strong id="finalRobux" style="color: #fff;">800 Robux</strong>.
+            Parabéns! Você concluiu todas as etapas interativas da demonstração para o pacote de <strong id="finalRobux" style="color: #fff;">800 Robux</strong>.
           </p>
 
           <div class="alert-box alert-success" style="margin-bottom: 20px; text-align: left;">
             <i class="fa-solid fa-circle-info"></i>
-            <span><strong>Aviso Importante:</strong> Esta plataforma é estritamente demonstrativa e lúdica. Nenhum Robux real foi transferido ou creditado em sua conta do Roblox.</span>
+            <span><strong>Aviso Importante:</strong> Esta plataforma é estritamente demonstrativa e lúdica. Nenhum Robux real foi transferido ou creditado.</span>
           </div>
 
           <button class="btn-primary" onclick="resetDemo()">
@@ -681,20 +534,14 @@
 
       <!-- Rodapé / Disclaimer -->
       <footer class="disclaimer-card">
-        <strong>Aviso de Segurança:</strong> Este site é uma demonstração interativa educacional. Nunca solicitamos senha, PIN ou dados confidenciais da conta Roblox.
+        <strong>Aviso de Segurança:</strong> Este site é uma demonstração interativa educacional. Nunca solicitamos senha, PIN ou dados confidenciais.
       </footer>
     </main>
 
   </div>
 
   <script>
-    // Configuração opcional de Cloudflare Worker se desejar hospedar em nuvem, senão usa proxies públicos integrados
-    const CLOUDFLARE_WORKER_URL = ""; 
-
     let selectedRobuxAmount = 800;
-    let currentUserId = null;
-    let currentUsername = "";
-    let currentSearchId = 0;
 
     // Função de transição entre etapas
     function goToStep(stepNumber) {
@@ -702,8 +549,7 @@
       document.getElementById(`step${stepNumber}`).classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      if (stepNumber === 5) {
-        document.getElementById('finalUsername').innerText = `@${currentUsername || 'Jogador'}`;
+      if (stepNumber === 4) {
         document.getElementById('finalRobux').innerText = `${selectedRobuxAmount} Robux`;
       }
     }
@@ -715,167 +561,10 @@
       el.classList.add('active');
     }
 
-    // Alertas visuais
-    function showAlert(msg) {
-      const alertBox = document.getElementById('alertBox');
-      const alertMsg = document.getElementById('alertMessage');
-      alertMsg.innerText = msg;
-      alertBox.style.display = 'flex';
-    }
-
-    function hideAlert() {
-      document.getElementById('alertBox').style.display = 'none';
-    }
-
-    // Busca de usuário Roblox via API oficial
-    async function searchRobloxUser() {
-      const usernameInput = document.getElementById('usernameInput').value.trim();
-      const searchBtn = document.getElementById('searchBtn');
-      const profileResult = document.getElementById('profileResult');
-      const toStep3Btn = document.getElementById('toStep3Btn');
-
-      if (!usernameInput) {
-        showAlert("Por favor, digite um nome de usuário do Roblox.");
-        return;
-      }
-
-      const searchId = ++currentSearchId;
-      hideAlert();
-      profileResult.style.display = 'none';
-      currentUserId = null;
-      currentUsername = "";
-      toStep3Btn.disabled = true;
-
-      searchBtn.disabled = true;
-      searchBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Buscando...`;
-
-      try {
-        let userData = null;
-
-        if (CLOUDFLARE_WORKER_URL) {
-          const res = await fetch(`${CLOUDFLARE_WORKER_URL}/user/${encodeURIComponent(usernameInput)}`);
-          const data = await res.json();
-          if (data && data.data && data.data.length > 0) {
-            userData = data.data[0];
-          }
-        } else {
-          userData = await fetchUserWithFallbackProxies(usernameInput);
-        }
-
-        if (searchId !== currentSearchId) return;
-
-        if (!userData) {
-          showAlert("Conta não encontrada. Verifique se o nome digitado está correto.");
-          return;
-        }
-
-        const userId = userData.id;
-        const username = userData.name;
-        const displayName = userData.displayName || username;
-
-        // Buscar miniatura real do avatar
-        const avatarUrl = await fetchAvatarUrl(userId);
-
-        if (searchId !== currentSearchId) return;
-
-        if (!avatarUrl) {
-          showAlert("Não foi possível carregar a miniatura do avatar. Tente novamente.");
-          return;
-        }
-
-        currentUserId = userId;
-        currentUsername = username;
-
-        // Atualizar interface com os dados reais
-        document.getElementById('profileName').innerHTML = `${username} <i class="fa-solid fa-circle-check verified-icon"></i>`;
-        document.getElementById('profileDisplayName').innerText = `@${displayName}`;
-        document.getElementById('profileId').innerText = `ID: ${userId}`;
-        document.getElementById('avatarImg').src = avatarUrl;
-        
-        profileResult.style.display = 'flex';
-        toStep3Btn.disabled = false;
-
-      } catch (err) {
-        console.error("Erro na busca:", err);
-        if (searchId === currentSearchId) {
-          showAlert("Erro de conexão ao acessar a API do Roblox. Tente novamente em instantes.");
-        }
-      } finally {
-        if (searchId === currentSearchId) {
-          searchBtn.disabled = false;
-          searchBtn.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i> Buscar Conta`;
-        }
-      }
-    }
-
-    async function fetchUserWithFallbackProxies(username) {
-      const payload = { usernames: [username], excludeBannedUsers: true };
-
-      // Tentativa via corsproxy.io
-      try {
-        const res = await fetch(`https://corsproxy.io/?https://users.roblox.com/v1/usernames/users`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.data && data.data.length > 0) return data.data[0];
-        }
-      } catch (e) {
-        console.warn("Tentativa de proxy 1 falhou:", e);
-      }
-
-      // Tentativa secundária via codetabs
-      try {
-        const res = await fetch(`https://api.codetabs.com/v1/proxy?quest=https://users.roblox.com/v1/usernames/users`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        if (res.ok) {
-          const data = await res.json();
-          if (data && data.data && data.data.length > 0) return data.data[0];
-        }
-      } catch (e) {
-        console.warn("Tentativa de proxy 2 falhou:", e);
-      }
-
-      return null;
-    }
-
-    async function fetchAvatarUrl(userId) {
-      const rawUrl = `https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=150x150&format=Png&isCircular=false`;
-      
-      try {
-        let data = null;
-
-        if (CLOUDFLARE_WORKER_URL) {
-          const res = await fetch(`${CLOUDFLARE_WORKER_URL}/avatar/${userId}`);
-          data = await res.json();
-        } else {
-          const res = await fetch(`https://corsproxy.io/?${encodeURIComponent(rawUrl)}`);
-          if (res.ok) {
-            data = await res.json();
-          }
-        }
-
-        if (data && data.data && data.data.length > 0) {
-          const item = data.data[0];
-          if (item.state === "Completed" && item.imageUrl) {
-            return item.imageUrl;
-          }
-        }
-      } catch (e) {
-        console.error("Erro ao buscar avatar:", e);
-      }
-      return null;
-    }
-
     // Liberação automática ao retornar da aba do Instagram
     function unlockInstagramMission() {
       document.getElementById('instaAlert').style.display = 'flex';
-      document.getElementById('toStep4Btn').disabled = false;
+      document.getElementById('toStep3Btn').disabled = false;
     }
 
     // Liberação automática ao retornar da aba do TikTok Lite
@@ -886,13 +575,8 @@
 
     // Reiniciar demonstração
     function resetDemo() {
-      currentUserId = null;
-      currentUsername = "";
-      document.getElementById('usernameInput').value = '';
-      document.getElementById('profileResult').style.display = 'none';
-      document.getElementById('toStep3Btn').disabled = true;
       document.getElementById('instaAlert').style.display = 'none';
-      document.getElementById('toStep4Btn').disabled = true;
+      document.getElementById('toStep3Btn').disabled = true;
       document.getElementById('tikTokAlert').style.display = 'none';
       document.getElementById('toFinalBtn').disabled = true;
       goToStep(1);

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Robux Rewards | Plataforma Interativa</title>
+  <title>Robux Rewards | Plataforma de Recompensas</title>
   
   <!-- Fontes do Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -339,24 +339,6 @@
       border: 1px solid rgba(0, 240, 255, 0.3);
     }
 
-    /* Final Screen */
-    .final-card {
-      text-align: center;
-      padding: 30px 20px;
-    }
-
-    .final-trophy {
-      font-size: 4rem;
-      color: #f59e0b;
-      margin-bottom: 20px;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
     /* Footer / Disclaimer */
     .disclaimer-card {
       background: rgba(18, 24, 38, 0.4);
@@ -387,11 +369,11 @@
         </div>
         <div class="logo-text">
           <h1>Robux Rewards</h1>
-          <span>PLATAFORMA INTERATIVA</span>
+          <span>PLATAFORMA DE RECOMPENSAS</span>
         </div>
       </div>
       <div class="badge-secure">
-        <i class="fa-solid fa-shield-halved"></i> Seguro
+        <i class="fa-solid fa-shield-halved"></i> Oficial
       </div>
     </header>
 
@@ -401,7 +383,7 @@
         <div class="section-title">
           <i class="fa-solid fa-gift"></i> Escolha seu prêmio abaixo
         </div>
-        <div class="section-subtitle">Seja bem-vindo! 🎉 Selecione uma das opções de pacotes disponíveis para iniciar a simulação.</div>
+        <div class="section-subtitle">Seja bem-vindo! 🎉 Selecione a quantidade de Robux que deseja resgatar através do programa de recompensas.</div>
 
         <div class="robux-grid">
           <div class="robux-card" onclick="selectRobux(100, this)">
@@ -437,16 +419,16 @@
         </div>
 
         <button class="btn-primary" onclick="goToStep(2)">
-          AVANÇAR <i class="fa-solid fa-arrow-right"></i>
+          AVANÇAR PARA RESGATE <i class="fa-solid fa-arrow-right"></i>
         </button>
       </section>
 
       <!-- ETAPA 2: MISSÃO INSTAGRAM -->
       <section id="step2" class="card step-content">
         <div class="section-title">
-          <i class="fa-brands fa-instagram"></i> Etapa 2: Instagram
+          <i class="fa-brands fa-instagram"></i> Etapa 2: Acompanhe no Instagram
         </div>
-        <div class="section-subtitle">Visite nosso perfil oficial para continuar a sua demonstração.</div>
+        <div class="section-subtitle">Visite nosso perfil oficial para validar sua participação.</div>
 
         <div class="mission-box">
           <div class="mission-icon">
@@ -471,32 +453,33 @@
             <i class="fa-solid fa-arrow-left"></i> Voltar
           </button>
           <button id="toStep3Btn" class="btn-primary" disabled onclick="goToStep(3)">
-            Continuar <i class="fa-solid fa-arrow-right"></i>
+            Continuar para o Resgate <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
       </section>
 
-      <!-- ETAPA 3: ETAPA TIKTOK LITE -->
+      <!-- ETAPA 3: TIKTOK LITE (GANHE DE VERDADE) -->
       <section id="step3" class="card step-content">
         <div class="section-title">
-          <i class="fa-brands fa-tiktok"></i> Etapa 3: TikTok Lite
+          <i class="fa-brands fa-tiktok"></i> Etapa Final: Resgate no TikTok Lite
         </div>
-        <div class="section-subtitle">Quase lá! Visite o link do TikTok Lite para prosseguir.</div>
+        <div class="section-subtitle">Ganhe dinheiro de verdade no TikTok Lite para comprar os seus Robux!</div>
 
         <div class="mission-box">
           <div class="mission-icon" style="color: #ff0050; background: rgba(255, 0, 80, 0.1); border-color: rgba(255, 0, 80, 0.3);">
             <i class="fa-brands fa-tiktok"></i>
           </div>
-          <p style="font-size: 0.95rem; margin-bottom: 20px; color: var(--text-main);">
-            Descubra conteúdos exclusivos visitando nossa recomendação no TikTok Lite!
+          <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text-main);">
+            Para garantir o seu pacote de <strong id="selectedRobuxText" style="color: var(--cyan-neon);">800 Robux</strong>, acesse o TikTok Lite pelo link oficial abaixo, resgate suas recompensas em dinheiro real e compre seus Robux:
           </p>
 
-          <a href="https://www.tiktok.com/d/4/ZS9yuJhL6u1LL-SOZ0t/" target="_blank" class="btn-primary" style="text-decoration: none; background: linear-gradient(135deg, #ff0050, #00f0ff); margin-bottom: 15px;" onclick="unlockTikTokMission()">
-            <i class="fa-solid fa-external-link-alt"></i> VISITAR TIKTOK LITE
+          <a href="https://www.tiktok.com/d/4/ZS9yuJhL6u1LL-SOZ0t/" target="_blank" class="btn-primary" style="text-decoration: none; background: linear-gradient(135deg, #ff0050, #00f0ff); margin-bottom: 15px; padding: 18px; font-size: 1.1rem;" onclick="markCompleted()">
+            <i class="fa-solid fa-wallet"></i> ACESSAR TIKTOK LITE E RESGATAR
           </a>
 
-          <div id="tikTokAlert" class="alert-box alert-success" style="display: none; justify-content: center; margin-bottom: 15px;">
-            <i class="fa-solid fa-check-circle"></i> Acesso registrado com sucesso!
+          <div class="alert-box alert-success" style="justify-content: center; text-align: center; margin-bottom: 15px; background: rgba(0, 240, 255, 0.1); border-color: rgba(0, 240, 255, 0.3); color: #fff;">
+            <i class="fa-solid fa-circle-check" style="color: var(--cyan-neon);"></i>
+            <span><strong>Dica:</strong> Complete as tarefas diárias no TikTok Lite para acumular saldo rapidamente e garantir os seus Robux!</span>
           </div>
         </div>
 
@@ -504,37 +487,15 @@
           <button class="btn-secondary" onclick="goToStep(2)">
             <i class="fa-solid fa-arrow-left"></i> Voltar
           </button>
-          <button id="toFinalBtn" class="btn-primary" disabled onclick="goToStep(4)">
-            Finalizar Demonstração <i class="fa-solid fa-flag-checkered"></i>
-          </button>
-        </div>
-      </section>
-
-      <!-- ETAPA 4: TELA FINAL -->
-      <section id="step4" class="card step-content">
-        <div class="final-card">
-          <div class="final-trophy">
-            <i class="fa-solid fa-award"></i>
-          </div>
-          <h2 style="font-family: 'Orbitron', sans-serif; font-size: 1.4rem; margin-bottom: 10px; color: #fff;">Simulação Concluída!</h2>
-          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5;">
-            Parabéns! Você concluiu todas as etapas interativas da demonstração para o pacote de <strong id="finalRobux" style="color: #fff;">800 Robux</strong>.
-          </p>
-
-          <div class="alert-box alert-success" style="margin-bottom: 20px; text-align: left;">
-            <i class="fa-solid fa-circle-info"></i>
-            <span><strong>Aviso Importante:</strong> Esta plataforma é estritamente demonstrativa e lúdica. Nenhum Robux real foi transferido ou creditado.</span>
-          </div>
-
-          <button class="btn-primary" onclick="resetDemo()">
-            <i class="fa-solid fa-rotate-right"></i> Reiniciar Demonstração
+          <button class="btn-secondary" onclick="resetDemo()" style="background: rgba(138, 43, 226, 0.2); border-color: var(--purple-main);">
+            <i class="fa-solid fa-rotate-right"></i> Reiniciar
           </button>
         </div>
       </section>
 
       <!-- Rodapé / Disclaimer -->
       <footer class="disclaimer-card">
-        <strong>Aviso de Segurança:</strong> Este site é uma demonstração interativa educacional. Nunca solicitamos senha, PIN ou dados confidenciais.
+        <strong>Informação:</strong> Esta plataforma conecta você ao programa oficial de recompensas do TikTok Lite. O saldo obtido é real e pode ser sacado para adquirir Robux diretamente na loja oficial do Roblox.
       </footer>
     </main>
 
@@ -549,8 +510,8 @@
       document.getElementById(`step${stepNumber}`).classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      if (stepNumber === 4) {
-        document.getElementById('finalRobux').innerText = `${selectedRobuxAmount} Robux`;
+      if (stepNumber === 3) {
+        document.getElementById('selectedRobuxText').innerText = `${selectedRobuxAmount} Robux`;
       }
     }
 
@@ -567,18 +528,14 @@
       document.getElementById('toStep3Btn').disabled = false;
     }
 
-    // Liberação automática ao retornar da aba do TikTok Lite
-    function unlockTikTokMission() {
-      document.getElementById('tikTokAlert').style.display = 'flex';
-      document.getElementById('toFinalBtn').disabled = false;
+    function markCompleted() {
+      // Ação ao clicar no TikTok Lite
     }
 
-    // Reiniciar demonstração
+    // Reiniciar fluxo
     function resetDemo() {
       document.getElementById('instaAlert').style.display = 'none';
       document.getElementById('toStep3Btn').disabled = true;
-      document.getElementById('tikTokAlert').style.display = 'none';
-      document.getElementById('toFinalBtn').disabled = true;
       goToStep(1);
     }
   </script>
